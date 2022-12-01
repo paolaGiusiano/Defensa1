@@ -1,0 +1,1460 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LibraryTests</name>
+    </assembly>
+    <members>
+        <member name="T:CoreBot.TestHandlerAgregarAdmin">
+            <summary>
+            Clase de testing que prueba el handler de Agregar Admin
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerAgregarAdmin.buscadorUsuarios">
+            <summary>
+            Buscador de usuarios singleton
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:CoreBot.TestHandlerAgregarAdmin.handler">
+            <summary>
+            Handler de RegistrarUsuario
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerAgregarAdmin.message">
+            <summary>
+            Mensaje enviado por un prospecto empleador
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CoreBot.TestHandlerAgregarAdmin.Setup">
+            <summary>
+            Mensaje enviado por un prospecto trabajador
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerAgregarAdmin.TestAgregarAdminPorSecret">
+            <summary>
+            Prueba que un usuario de telegram puede registrarse como empleador
+            </summary>
+        </member>
+        <member name="T:CoreBot.TestHandlerBuscarServicio">
+            <summary>
+            Clase de testing que prueba el handler de ContratarServicio
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerBuscarServicio.gestorUsuario">
+            <summary>
+            Gestor singleton de usuarios
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerBuscarServicio.gestorCategorias">
+            <summary>
+            Gestor singleton de categorias
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerBuscarServicio.gestorServicios">
+            <summary>
+            Gestor singleton de servicios
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerBuscarServicio.message">
+            <summary>
+            Mensaje enviado por el usuario
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerBuscarServicio.handler">
+            <summary>
+            Instancia del handler
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerBuscarServicio.admin1">
+            <summary>
+            Administrador que crea las categorias
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerBuscarServicio.empleador1">
+            <summary>
+            Un empleador para datos de prueba
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerBuscarServicio.trabajador0">
+            <summary>
+            Un trabajador que vive lejos del empleador y no tiene calificaciones
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerBuscarServicio.trabajador1">
+            <summary>
+            Un trabajador que vive cerca del empleador y tiene bajas calificaciones
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerBuscarServicio.trabajador2">
+            <summary>
+            Un trabajador que vive lejos del empleador y tiene altas calificaciones
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerBuscarServicio.categoria1">
+            <summary>
+            Una categoria para datos de prueba
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerBuscarServicio.servicio0">
+            <summary>
+            Un servicio para datos de prueba proveido por trabajador 0
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerBuscarServicio.servicio1">
+            <summary>
+            Un servicio para datos de prueba proveido por trabajador1
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerBuscarServicio.servicio2">
+            <summary>
+            Un servicio para datos de prueba proveido por trabajador2
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerBuscarServicio.calificacion11">
+            <summary>
+            Una primera calificacion para trabajador1
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerBuscarServicio.calificacion12">
+            <summary>
+            Una segunda calificacion para trabajador1
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerBuscarServicio.calificacion21">
+            <summary>
+            Una primera calificacion para trabajador2
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerBuscarServicio.calificacion22">
+            <summary>
+            Una segunda calificacion para trabajador2
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerBuscarServicio.Setup">
+            <summary>
+            Setup para los datos de prueba
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerBuscarServicio.TestBuscarServicioSinOrden">
+            <summary>
+            Prueba que un usuario puede buscar un servicio sin ordenarlo
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerBuscarServicio.TestBuscarServicioCalificacion">
+            <summary>
+            Prueba que un usuario puede buscar un servicio ordenado por calificaion
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerBuscarServicio.TestBuscarServicioDistancia">
+            <summary>
+            Prueba que un usuario puede buscar un servicio ordenado por distancia
+            </summary>
+        </member>
+        <member name="T:CoreBot.TestHandlerBuscarUsuario">
+            <summary>
+            Clase que prueba el handler de buscar ususario
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerBuscarUsuario.gestorUsuario">
+            <summary>
+            Gestor singleton de usuarios
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerBuscarUsuario.buscadorUsuarios">
+            <summary>
+            Buscador de usuarios singleton que busca un usuario en la lista de todos los usuarios
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerBuscarUsuario.messageempleador">
+            <summary>
+            Mensaje enviado por el usuario empleador
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerBuscarUsuario.messagetrabajador">
+            <summary>
+            Mensaje enviado por el usuario trabajador
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerBuscarUsuario.handler">
+            <summary>
+            Instancia del handler
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerBuscarUsuario.empleador1">
+            <summary>
+            Un empleador para datos de prueba
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerBuscarUsuario.trabajador1">
+            <summary>
+            Un trabajador para datos de prueba
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerBuscarUsuario.Setup">
+            <summary>
+            Setup para los datos de prueba
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerBuscarUsuario.TestBuscaEmpleadorID">
+            <summary>
+            Prueba que se puede buscar un empleador por ID
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerBuscarUsuario.TestBuscaTrabajadorID">
+            <summary>
+            Prueba que se puede buscar un trabajador por ID
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerBuscarUsuario.TestBuscaEmpleadorEmail">
+            <summary>
+            Prueba que se puede buscar un empleador por email
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerBuscarUsuario.TestBuscaTrabajadorEmail">
+            <summary>
+            Prueba que se puede buscar un trabajador por email
+            </summary>
+        </member>
+        <member name="T:CoreBot.TestHandlerContratarServicio">
+            <summary>
+            Clase de testing que prueba el handler de ContratarServicio
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerContratarServicio.gestorUsuario">
+            <summary>
+            Gestor singleton de usuarios
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerContratarServicio.gestorServicios">
+            <summary>
+            Gestor singleton de servicios
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerContratarServicio.gestorCategorias">
+            <summary>
+            Gestor singleton de categorias
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerContratarServicio.message">
+            <summary>
+            Mensaje enviado por el usuario
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerContratarServicio.handler">
+            <summary>
+            Instancia del handler
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerContratarServicio.admin1">
+            <summary>
+            Administrador que crea categorias
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerContratarServicio.empleador1">
+            <summary>
+            Un empleador para datos de prueba
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerContratarServicio.trabajador1">
+            <summary>
+            Un trabajador para datos de prueba
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerContratarServicio.categoria1">
+            <summary>
+            Una categoria para datos de prueba
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerContratarServicio.servicioHora">
+            <summary>
+            Un servicio con pago por hora para datos de prueba
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerContratarServicio.servicioTermino">
+            <summary>
+            Un servicio con pago a termino para datos de prueba
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerContratarServicio.Setup">
+            <summary>
+            Setup para los datos de prueba
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerContratarServicio.TestContratarHoraPorID">
+            <summary>
+            Prueba que un usuario puede contratar un servicio por hora simplemente sabiendo el ID del mismo
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:CoreBot.TestHandlerContratarServicio.TestContratarTerminoPorID">
+            <summary>
+            Prueba que el usuario puede contratar un servicio a termino sabiendo su ID
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerContratarServicio.TestContratarHoraPorParam">
+            <summary>
+            Prueba que el usuario puede contratar un servicio por hora sin saber su ID pero sabiendo todos sus otros parametros
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerContratarServicio.TestContratarTerminoPorParam">
+            <summary>
+            Prueba que un usuario puede contratar un servicio con pago a termino sin saber su ID pero sabiendo todos sus otros parametros
+            </summary>
+        </member>
+        <member name="T:CoreBot.TestHandlerCrearCategoria">
+            <summary>
+            Clase de testing que prueba el handler de Crear categoria 
+            /// </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerCrearCategoria.gestorUsuario">
+            <summary>
+            Gestor singleton de usuarios
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerCrearCategoria.gestorCategorias">
+            <summary>
+            Gestor singleton de categorias
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerCrearCategoria.message">
+            <summary>
+            Mensaje enviado por el usuario
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerCrearCategoria.handler">
+            <summary>
+            Instancia del handler
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerCrearCategoria.admin1">
+            <summary>
+            Administrador que crea categorias
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerCrearCategoria.empleador1">
+            <summary>
+            Un empleador para datos de prueba
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerCrearCategoria.trabajador1">
+            <summary>
+            Un trabajador para datos de prueba
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerCrearCategoria.categoria1">
+            <summary>
+            Una categoria para datos de prueba
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerCrearCategoria.Setup">
+            <summary>
+            Setup para los datos de prueba
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerCrearCategoria.TestCrearCategoriaInicial">
+            <summary>
+            Prueba que un administrador puede crear una categoría nueva
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerCrearCategoria.TestCrearCategoriaRepetida">
+            <summary>
+            Prueba que un administrador no puede crear una categoria ya existente
+            </summary>
+        </member>
+        <member name="T:CoreBot.TestHandlerCrearServicio">
+            <summary>
+            Clase de testing que prueba el handler de ContratarServicio
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerCrearServicio.gestorUsuario">
+            <summary>
+            Gestor singleton de usuarios
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerCrearServicio.gestorCategorias">
+            <summary>
+            Gestor singleton de categorias
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerCrearServicio.message">
+            <summary>
+            Mensaje enviado por el usuario
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerCrearServicio.handler">
+            <summary>
+            Instancia del handler
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerCrearServicio.admin1">
+            <summary>
+            Administrador que crea categorias
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerCrearServicio.empleador1">
+            <summary>
+            Un empleador para datos de prueba
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerCrearServicio.trabajador1">
+            <summary>
+            Un trabajador para datos de prueba
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerCrearServicio.categoria1">
+            <summary>
+            Una categoria para datos de prueba
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerCrearServicio.Setup">
+            <summary>
+            Setup para los datos de prueba
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerCrearServicio.TestCrearServicio">
+            <summary>
+            Prueba que un usuario puede crear un servicio
+            </summary>
+        </member>
+        <member name="T:CoreBot.TestHandlerEvaluarContrato">
+            <summary>
+            CLase de Test
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerEvaluarContrato.users">
+            <summary>
+            Singleton gestion usuarios
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:CoreBot.TestHandlerEvaluarContrato.contratos">
+            <summary>
+            Instancia singleton para buscar los contratos antes de calificarlos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:CoreBot.TestHandlerEvaluarContrato.buscadorUsuario">
+            <summary>
+            Instancia Singleton para traerme el usuario
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:CoreBot.TestHandlerEvaluarContrato.message">
+            <summary>
+            Mensaje enviado por el usuario
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerEvaluarContrato.handler">
+            <summary>
+            Handler base para el test
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CoreBot.TestHandlerEvaluarContrato.Setup">
+            <summary>
+            Configuracion que se hace una vez sola
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerEvaluarContrato.TestEvaluarContrato">
+            <summary>
+            Evalua la calificacion del contrato.
+            </summary>
+        </member>
+        <member name="T:CoreBot.TestHandlerLeerNotificacion">
+            <summary>
+            Clase de testing que prueba el handler de ContratarServicio
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerLeerNotificacion.gestorUsuario">
+            <summary>
+            Gestor singleton de usuarios
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerLeerNotificacion.messageempleador">
+            <summary>
+            Un mensaje enviado por el empleador
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerLeerNotificacion.messagetrabajador">
+            <summary>
+            Un mensaje enviado por el trabajador
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerLeerNotificacion.messageadministrador">
+            <summary>
+            Un mensaje enviado por el administrador
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerLeerNotificacion.handler">
+            <summary>
+            Instancia del handler
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerLeerNotificacion.empleador1">
+            <summary>
+            Un empleador para datos de prueba
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerLeerNotificacion.trabajador1">
+            <summary>
+            Un trabajador para datos de prueba
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerLeerNotificacion.administrador1">
+            <summary>
+            Un administrador para datos de prueba
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerLeerNotificacion.notificacionempleador1">
+            <summary>
+            Una notificacion del empleador
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerLeerNotificacion.notificacionempelador2">
+            <summary>
+            Otra notificacion del empleador
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerLeerNotificacion.notificaciontrabajador1">
+            <summary>
+            Una notificacion del trabajador
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerLeerNotificacion.notificaciontrabajador2">
+            <summary>
+            Otra notificacion del trabajador
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerLeerNotificacion.notificacionadministrador1">
+            <summary>
+            Una notificacion del administrador
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerLeerNotificacion.notificacionadminsitrador2">
+            <summary>
+            Otra notificacion del administrador
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerLeerNotificacion.Setup">
+            <summary>
+            Setup de los datos de prueba
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerLeerNotificacion.RepetitiveSetup">
+            <summary>
+            Setup que se hace todos los tests para reiniciar el estado de las notificaciones
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerLeerNotificacion.TestEmpleadorRead">
+            <summary>
+            Test que prueba que el empleador puede leer sus notificaciones leidas
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerLeerNotificacion.TestEmpleadorUnread">
+            <summary>
+            Test que prueba que el empleador puede leer sus notificaciones no leidas
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerLeerNotificacion.TestEmpleadorAll">
+            <summary>
+            Test que prueba que el empleador puede leer todas sus notificaciones
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerLeerNotificacion.TestTrabajadorRead">
+            <summary>
+            Test que prueba que el trabajador puede leer sus notificaciones leidas
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerLeerNotificacion.TestTrabajadorUnread">
+            <summary>
+            Test que prueba que el trabajador puede leer sus notificaciones no leidas
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerLeerNotificacion.TestTrabajadorAll">
+            <summary>
+            Test que prueba que el trabajador puede leer todas sus notificaciones
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerLeerNotificacion.TestAdminRead">
+            <summary>
+            Test que prueba que el admin puede leer sus notificaciones leidas
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerLeerNotificacion.TestAdminUnread">
+            <summary>
+            Test que prueba que el admin puede leer sus notificaciones no leidas
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerLeerNotificacion.TestAdminAll">
+            <summary>
+            Test que prueba que el admin puede leer todas sus notificaciones
+            </summary>
+        </member>
+        <member name="T:CoreBot.TestHandlerRegistrarUsuario">
+            <summary>
+            Clase de testing que prueba el handler de RegistrarUsuario
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerRegistrarUsuario.buscadorUsuarios">
+            <summary>
+            Buscador de usuarios singleton
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:CoreBot.TestHandlerRegistrarUsuario.handler">
+            <summary>
+            Handler de RegistrarUsuario
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerRegistrarUsuario.messageempleador">
+            <summary>
+            Mensaje enviado por un prospecto empleador
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:CoreBot.TestHandlerRegistrarUsuario.messagetrabajador">
+            <summary>
+            Mensaje enviado por un prospecto trabajador
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CoreBot.TestHandlerRegistrarUsuario.Setup">
+            <summary>
+            Setup que ocurre solo una vez
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerRegistrarUsuario.TestRegistrarEmpleador">
+            <summary>
+            Prueba que un usuario de telegram puede registrarse como empleador
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerRegistrarUsuario.TestRegistrarTrabajador">
+            <summary>
+            Prueba que un usuario de telegram puede registrarse como trabajador
+            </summary>
+        </member>
+        <member name="T:CoreBot.TestHandlerRemoverServicio">
+            <summary>
+            Clase de testing que prueba el handler de ContratarServicio
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerRemoverServicio.gestorUsuario">
+            <summary>
+            Gestor singleton de usuarios
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerRemoverServicio.gestorServicios">
+            <summary>
+            Gestor singleton de servicios
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerRemoverServicio.gestorCategorias">
+            <summary>
+            Gestor singleton de categorias
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerRemoverServicio.message">
+            <summary>
+            Mensaje enviado por el usuario
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerRemoverServicio.handler">
+            <summary>
+            Instancia del handler
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerRemoverServicio.servicioHora">
+            <summary>
+            Servicio que cobra en base de hora
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerRemoverServicio.servicioTermino">
+            <summary>
+            Servicio que cobra a termino
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerRemoverServicio.administrador">
+            <summary>
+            Administrador del sistema
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerRemoverServicio.trabajador1">
+            <summary>
+            Un trabajador del sistema
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerRemoverServicio.empleador1">
+            <summary>
+            Un empleador del sistema
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerRemoverServicio.categoria1">
+            <summary>
+            Una categoria del sistema
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestHandlerRemoverServicio.buscadorServicios">
+            <summary>
+            Buscador de servicios singleton
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerRemoverServicio.Setup">
+            <summary>
+            Setup de data de testing
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestHandlerRemoverServicio.TestRemoverServicio">
+            <summary>
+            Prueba que un usuario puede contratar un servicio por hora simplemente sabiendo el ID del mismo
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:CoreBot.TestAdministrador">
+            <summary>
+            Testing de la clase Buscador
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestAdministrador.gestor">
+            <summary>
+            Gestor de usuarios que contiene la lista total de todos los usuarios
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestAdministrador.buscadorUsuarios">
+            <summary>
+            Buscador de usuarios
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestAdministrador.TestAgregarAdministrador">
+            <summary>
+            Prueba que un Administrador es creado con dados parametros
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestAdministrador.MostrarAdministrador">
+            <summary>
+            Prueba que si se solicita mostrar la informacion de un Administrador en base a su ID, el sistema devuelve la misma
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestAdministrador.TestNombre">
+            <summary>
+            Prueba si el nombre del administador es el esperado
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestAdministrador.TestApellido">
+            <summary>
+            Prueba si el apellido del administador es el esperado
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestAdministrador.TestEmail">
+            <summary>
+            Prueba si el Email del administador es el esperado
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestAdministrador.TestContraseña">
+            <summary>
+            Prueba si la contraseña del administador es la esperada
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestAdministrador.TestID">
+            <summary>
+            Prueba si el id del administador es la esperada
+            </summary>
+        </member>
+        <member name="T:CoreBot.TestBuscadorServicio">
+            <summary>
+            Testing de la clase Buscador
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestBuscadorServicio.categoria1">
+            <summary>
+            Variable global que representa una categoria muy usada
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestBuscadorServicio.categoria2">
+            <summary>
+            Variable global que representa una categoria no muy usada
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestBuscadorServicio.servicio1">
+            <summary>
+            Variable global que representa un servicio
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestBuscadorServicio.servicio2">
+            <summary>
+            Variable global que representa un servicio
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestBuscadorServicio.servicio3">
+            <summary>
+            Variable global que representa un servicio
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestBuscadorServicio.servicio4">
+            <summary>
+            Variable global que representa un servicio
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestBuscadorServicio.empleador1">
+            <summary>
+            Variable global que representa a un empleador usando el sistema
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestBuscadorServicio.trabajador1">
+            <summary>
+            Variable global que define trabajador para servicio1
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestBuscadorServicio.trabajador2">
+            <summary>
+            Variable global que define trabajador para servicio2
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestBuscadorServicio.trabajador3">
+            <summary>
+            Variable global que define trabajador para servicio3
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestBuscadorServicio.gestor">
+            <summary>
+            Gestor de servicios que contiene todos los servicios
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestBuscadorServicio.gestorCategorias">
+            <summary>
+            Gestor de categorias que contiene todas las categorias
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestBuscadorServicio.Setup">
+            <summary>
+            Prepara los datos de prueba para el testing
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestBuscadorServicio.TestBuscarPorCategoria">
+            <summary>
+            Prueba que el Buscador devuelve una lista basada en una categoria enviada como parametro
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestBuscadorServicio.TestBuscarOrdenadoCalificacion">
+            <summary>
+            Prueba que el Buscador devuelve una lista ordendada de forma descendente por la calificacion del trabajador del servicio
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestBuscadorServicio.TestBuscarOrdenadoDistancia">
+            <summary>
+            Prueba que el Buscador devuelve una lista ordenada de forma ascendente por la direccion del trabajador del servicio
+            Se requiere el API Geolocator para confirmar la distancia de dos puntos
+            </summary>
+        </member>
+        <member name="T:CoreBot.TestCalificacion">
+            <summary>
+            Testing de la clase Calificacion
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestCalificacion.TestValorunoacinco">
+            <summary>
+            Testea los valores de 1 a 5 y obtiene la calificación
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestCalificacion.TestRetonoFecha">
+            <summary>
+            Testea que retorne un 3 a los 30 dias
+            </summary>
+        </member>
+        <member name="T:CoreBot.TestCategoria">
+            <summary>
+            Testing de la clase Buscador
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestCategoria.TestNombre">
+            <summary>
+            Testea el nombre de la categoria
+            </summary>
+        </member>
+        <member name="T:CoreBot.TestContrato">
+            <summary>
+            Testing de la clase Contrato
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestContrato.TestCrearContrato">
+            <summary>
+            Test que verifica que el contrato se cree correctamente con sus parametros correspondientes
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestContrato.TestCalificarContratoEmpleador">
+            <summary>
+            Testea que se le pueda calificar al empleador en el contrato
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestContrato.TestCalificarContratoTrabajador">
+            <summary>
+            Testea que se le pueda calificar al empleador en el contrato
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestContrato.TestCrearContratoHora">
+            <summary>
+            Test que prueba la creacion de un contrato por hora
+            </summary>
+        </member>
+        <member name="T:CoreBot.TestEmpleador">
+            <summary>
+            Clase de testing que prueba la creacion, modificacion y borrado de un usuario Empleador
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestEmpleador.gestor">
+            <summary>
+            Gestor de usuarios que contiene la lista total de todos los usuarios
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestEmpleador.buscador">
+            <summary>
+            Buscador de usuarios que obtiene a los usuarios
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestEmpleador.TestCrearEmpleador">
+            <summary>
+            Prueba que un Empleador es creado con dados parametros
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestEmpleador.TestModificarEmpleador">
+            <summary>
+            Prueba que si se modifica un Empleador para que tenga un valor dado, el valor es el esperado
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestEmpleador.TestBorrarEmpleador">
+            <summary>
+            Prueba que si se borra un Empleador, sus valores son null
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestEmpleador.MostrarEmpleador">
+            <summary>
+            Prueba que si se solicita mostrar la informacion de un Empleador en base a su ID, el sistema devuelve la misma
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestEmpleador.TestNombre">
+            <summary>
+            Prueba que el empleador tenga nombre y sea el esperado
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestEmpleador.TestApellido">
+            <summary>
+            Prueba que el empleador tenga apellidp y sea el esperado
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestEmpleador.TestEmail">
+            <summary>
+            Prueba que el empleador tenga email y sea el esperado
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestEmpleador.TestTelefono">
+            <summary>
+            Prueba que el empleador tenga telefono y que este sea el esperado
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestEmpleador.TestDireccion">
+            <summary>
+            Prueba que el empleador tenga direccion y que esta sea la esperada
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestEmpleador.TestContraseña">
+            <summary>
+            Prueba que el empleador tenga contraseña y que este sea la esperada
+            </summary>
+        </member>
+        <member name="T:CoreBot.TestGestorCategorias">
+            <summary>
+            Testing de la clase GestorCategoria
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestGestorCategorias.TestCrearCategoria">
+            <summary>
+            Prueba que el gestor crea una categoria nueva y la agrega a su lista basado en un nombre
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestGestorCategorias.TestRemoverCategoria">
+            <summary>
+            Prueba que al remover una categoria del gestor, esta ya no esta presente en la lista de categorias
+            </summary>
+        </member>
+        <member name="T:CoreBot.TestGestorContratos">
+            <summary>
+            Testing de la clase GestorContratos
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestGestorContratos.TestCrearContrato">
+            <summary>
+            Prueba que el gestor crea un contrato nuevo y lo agrega a su lista de todos los contratos
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestGestorContratos.TestMostrarContrato">
+            <summary>
+            Prueba que el gestor puede mostrar un contrato en particular con sus parametros
+            </summary>
+        </member>
+        <member name="T:CoreBot.TestGestorServicio">
+            <summary>
+            Testing de la clase GestorUsuario
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestGestorServicio.gestor">
+            <summary>
+            Instancia del gestor de usuario singleton
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestGestorServicio.TestCrearServicio">
+            <summary>
+            Comprueba que el servicio creado se agrega a la lista de TodoServicios
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestGestorServicio.TestAgregarServicio">
+            <summary>
+            Se prueba que al Agregar un servicio, este se agregue con los parametros esperados
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestGestorServicio.TestRemoverServicio">
+            <summary>
+            Prueba que los servicios sean removidos con éxito de la lista TodoServicios
+            </summary>
+        </member>
+        <member name="T:CoreBot.TestGestorUsuario">
+            <summary>
+            Testing de la clase GestorUsuario
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestGestorUsuario.gestor">
+            <summary>
+            Instancia del gestor de usuario singleton
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestGestorUsuario.TestAgregarAdmin">
+            <summary>
+            TestAgregarAdmin prueba que se creo un admin con los parámetros pasados
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestGestorUsuario.TestAgregarEmpleador">
+            <summary>
+            TestAgregarEmpleador prueba que se creo un empleador con los parámetros pasados
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestGestorUsuario.TestAgregarTrabajador">
+            <summary>
+            TestAgregarTrabajador prueba que se creo un trabajador con los parámetros pasados
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestGestorUsuario.TestRemoverAdmin">
+            <summary>
+            TestRemoverAdmin prueba si se elimino el admin que se quiere elimanar
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestGestorUsuario.TestRemoverTrabajador">
+            <summary>
+            TestRemoverTrabajador prueba si se elimino de la lista trabajadores el trabajador que se quiere elimanar
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestGestorUsuario.TestRemoverEmpleador">
+            <summary>
+            TestRemoverEmpleador prueba si se elimino de la lista Empleadores el empleador que se quiere elimanar
+            </summary>
+        </member>
+        <member name="T:CoreBot.TestPublishers">
+            <summary>
+            Testing de las clases de Publisher que implementan Observer
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestPublishers.gestorServicios">
+            <summary>
+            Gestor de servicios singleton
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestPublishers.gestorUsuario">
+            <summary>
+            Gestor de usuarios singleton
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestPublishers.gestorCategorias">
+            <summary>
+            Gestor de categorias singleton
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestPublishers.gestorContratos">
+            <summary>
+            Gestor de contratos singleton
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestPublishers.trabajador1">
+            <summary>
+            Un trabajador
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestPublishers.empleador1">
+            <summary>
+            Un empleador
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestPublishers.admin1">
+            <summary>
+            Un admin
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestPublishers.categoria1">
+            <summary>
+            Una categoria
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestPublishers.servicio1">
+            <summary>
+            Un servicio cargado al sistema
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestPublishers.contrato1">
+            <summary>
+            Un contrato cargado al sistema
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestPublishers.Setup">
+            <summary>
+            Setup que ocurre solo una vez, definiendo los usuarios y categoria
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestPublishers.RepetitiveSetup">
+            <summary>
+            Setup a repetirse cada iteracion, cargando los datos del servicio y el contrato
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestPublishers.TestSubscribirServicio">
+            <summary>
+            Prueba que cuando se crea un servicio, se subscribe el trabajador a su publisher
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestPublishers.TestSubscribirContrato">
+            <summary>
+            Prueba que cuando se crea un contrato, el trabajador y empleador del mismo se subscriben a su publisher
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestPublishers.TestEnviarNotificacionServicio">
+            <summary>
+            Prueba que cuando se remueve un servicio, se envia notificacion a los usuarios subscritos al publisher de ese servicio
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestPublishers.TestEnviarNotificacionContrato">
+            <summary>
+            Prueba que si se evalua un contrato, se envia una notificacion a los usuarios subscritos al publisher de ese contrato
+            </summary>
+        </member>
+        <member name="T:CoreBot.TestServicio">
+            <summary>
+            Testing de la clase Buscador
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestServicio.TestCrearServicio">
+            <summary>
+            Prueba que un Servicio es creado con dados parametros
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestServicio.TestActualizarServicio">
+            <summary>
+            Prueba que el servicio se actualice de forma correcta
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestServicio.TestModificarCategoria">
+            <summary>
+            Prueba que la categoría modificada sea la esperada en el servicio que recibe este cambio
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestServicio.TestAgregarServicio">
+            <summary>
+            Testea que funcione correctamente el agregar un servicio a un trabajador
+            </summary>
+        </member>
+        <member name="T:CoreBot.TestTrabajador">
+            <summary>
+            Clase de testing que prueba la creacion, modificacion y borrado de un usuario trabajador
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestTrabajador.gestor">
+            <summary>
+            Gestor de usuarios que contiene la lista total de todos los usuarios
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestTrabajador.buscador">
+            <summary>
+            Buscador de usuarios que obtiene a los usuarios
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestTrabajador.Setup">
+            <summary>
+            Metodo de setup que define un trabajador a buscar
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestTrabajador.TestCrearTrabajador">
+            <summary>
+            Prueba que un Trabajador es creado con dados parametros
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestTrabajador.TestModificarTrabajador">
+            <summary>
+            Prueba que si se modifica un Trabajador para que tenga un valor dado, el valor es el esperado
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestTrabajador.TestBorrarTrabajador">
+            <summary>
+            Prueba que si se borra un Trabajador, sus valores son null
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestTrabajador.MostrarTrabajador">
+            <summary>
+            Prueba que si se solicita mostrar la informacion de un Trabajador en base a su ID, el sistema devuelve la misma
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestTrabajador.TestNombre">
+            <summary>
+            Prueba que el trabajador tenga nombre y sea el esperado
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestTrabajador.TestApellido">
+            <summary>
+            Prueba que el trabajador tenga apellido y sea el esperado
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestTrabajador.TestEmail">
+            <summary>
+            Prueba que el trabajador tenga email y sea el esperado
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestTrabajador.TestTelefono">
+            <summary>
+            Prueba que el trabajador tenga telefono y que este sea el esperado
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestTrabajador.TestDireccion">
+            <summary>
+            Prueba que el trabajador tenga direccion y que esta sea la esperada
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestTrabajador.TestContraseña">
+            <summary>
+            Prueba que el trabajador tenga contraseña y que esta sea la esperada
+            </summary>
+        </member>
+        <member name="T:CoreBot.TestUserStories">
+            <summary>
+            Testing de la clase Buscador
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestUserStories.gestorCategorias">
+            <summary>
+            Gestor de categorias
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestUserStories.gestorContratos">
+            <summary>
+            Gestor de contratos
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestUserStories.gestorServicios">
+            <summary>
+            Gestor de servicios
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestUserStories.gestorUsuario">
+            <summary>
+            Gestor de Usuarios
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestUserStories.buscadorServicios">
+            <summary>
+            Buscador de servicios
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestUserStories.buscadorUsuarios">
+            <summary>
+            Buscador de usuarios
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestUserStories.admin1">
+            <summary>
+            Variable global que representa un admin del sistema
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestUserStories.trabajador1">
+            <summary>
+            Variable global que representa un trabajador ya existente
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestUserStories.trabajador2">
+            <summary>
+            Variable global que representa un segundo trabajador ya existente
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestUserStories.empleador1">
+            <summary>
+            Variable global que representa un empleador ya existente
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestUserStories.servicio1">
+            <summary>
+            Variable global que representa un servicio ya existente ofrecido por el trabajador 1
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestUserStories.servicio2">
+            <summary>
+            Variable global que representa un segundo servicio ya existente ofrecido por el trabajador 2
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestUserStories.servicio3">
+            <summary>
+            Variable global que representa un tercer servicio ya existente, ofrecido por el trabajador 1
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestUserStories.servicio4">
+            <summary>
+            Variable global que representa un cuarto servicio ya existente, ofrecido por el trabajador 2
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestUserStories.categoria1">
+            /// <summary>
+            Variable global que representa una categoria ya existente
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestUserStories.categoria2">
+            <summary>
+            Variable global que representa una segunda categoria ya existente;
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestUserStories.calificacion1a">
+            <summary>
+            Variable global que representa una calificacion de un trabajador
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestUserStories.calificacion1b">
+            <summary>
+            Variable global que representa una segunda calificacion de un trabajador
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestUserStories.calificacion2a">
+            <summary>
+            Variable global que representa una calificacion de un segundo trabajador
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestUserStories.calificacion2b">
+            <summary>
+            Variable global que representa una segunda calificacion de un segundo trabajador
+            </summary>
+        </member>
+        <member name="F:CoreBot.TestUserStories.calificacion3">
+            <summary>
+            Variable global que representa una calificacion de un empleador
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestUserStories.Setup">
+            <summary>
+            Setup de data de testing para los casos de prueba
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestUserStories.US1">
+            <summary>
+            Como administrador quiero poder indicar categorias sobre las cuales se realizaran las ofertas de servicios 
+            para que de esa forma los trabajadores puedan clasificarlos
+            IN: Nombre de una nueva categoria
+            OUT: La categoria es creada
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestUserStories.US2">
+            <summary>
+            Como administrador quiero poder dar de baja ofertas de servicios, avisando al trabajador 
+            para que de esa forma pueda evitar ofertas inadecuadas
+            IN: Servicio con una oferta inadecuada
+            OUT: Ese servicio ya no esta en la lista, la informacion de contacto del trabajador de ese servicio
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestUserStories.US3">
+            <summary>
+            Como trabajador quiero poder registrarme a la plataforma, indicando mis datos personales e informacion de contacto
+            para que de esta forma pueda proveer mi informacion de contacto a empleadores
+            IN: Datos del trabajador
+            OUT: Trabajador existe en la lista de trabajadores del gestor con sus datos personales
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestUserStories.US4">
+            <summary>
+            Como trabajador quiero poder hacer ofertas de servicios, mi oferta indicara en que categoria publicar, tendra una descripcion
+            del servicio ofertado y un precio
+            para que de esa forma mis ofertas sean ofrecidas a quienes quieren contratar mis servicios
+            IN: Datos del servicio a ofrecer
+            OUT: Una oferta de servicios con esos datos se puede encontrar en la lista de servicios
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestUserStories.US5">
+            <summary>
+            Como empleador quiero registrarme en la plataforma, indicando mis datos personales e informacion de contacto
+            para que de esa forma pueda proveer informacion de contacto a los trabajadores que quiero contratar
+            IN: Datos del empleador
+            OUT: Empleador existe en la lista de empleadores del gestor con sus datos personales
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestUserStories.US6">
+            <summary>
+            Como empleador quiero poder buscar ofertas de trabajo, opcionalmente filtrando por categoria
+            para de esta forma poder contratar un servicio
+            IN: Categoria por la cual buscar servicios
+            OUT: Lista de servicios que coincidan con esa categoria
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestUserStories.US7">
+            <summary>
+            Como empleador quiero poder ver el resultado de las busquedas de oferta de trabajo ordenado de forma ascendiente de distancia
+            del trabajador a mi ubicacion, es decir, las mas cercanas primero
+            para que de esta forma pueda poder contratar un servicio
+            IN: Categoria por la que se busca el servicio
+            OUT: Lista de servicios que coinciden con la categoria ordenada por direccion
+            NOTA: Al tener una clase de API que calcule la distancia entre dos puntos, se cambiara este metodo para coincidir con el
+            requerimiento original
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestUserStories.US8">
+            <summary>
+            Como empleador quiero poder ver el resultado de las busquedas de oferta de trabajo ordenado de forma descendiente por
+            reputacion, es decir, las de mejor reputacion primero
+            para que de esa forma pueda contratar un servicio
+            IN: Categoria por la cual buscar servicios
+            OUT: Lista de servicios que coinciden con la categoria ordenados por calificacion del trabajador
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestUserStories.US9">
+            <summary>
+            Como empleador quiero poder contactar a un trabajador
+            para que de esta forma pueda contratar una oferta de servicios determinada
+            IN: ID de un trabajdor
+            OUT: Informacion de contacto del trabajador
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestUserStories.US10">
+            <summary>
+            Como trabajador quiero poder calificar a un empleador, el empleador me tiene que calificar a mi tambien, si no me califica
+            en un mes, la calificacion sera neutral
+            para que de esta forma pueda definir la reputacion de mi empleador
+            IN: Calificacion a dar a un contrato en particular
+            OUT: La calificacion se agrega a la lista de calificaciones del empleador y su calificacion total se actualiza
+            NOTA: Testing de la calificacion neutral no fue posible sin alterar el clock de la computadora.
+            Como posible mejora se podria hacer que el DateTime de Calificacion se reciba como variable
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestUserStories.US11">
+            <summary>
+            Como empleador quiero poder calificar a un trabajador, el trabajador me tiene que calificar a mi tambien, si no me califica
+            en un mes, la calificacion sera neutral
+            para que de esta forma pueda definir la reputacion de mi trabajador
+            IN: Calificacion a dar a un contrato en particular
+            OUT: La calificacion se agrega a la lista de calificaciones del trabajador y su calificacion total se actualiza
+            </summary>
+        </member>
+        <member name="M:CoreBot.TestUserStories.US12">
+            <summary>
+            Como trabajador quiero poder saber la calificacion de un empleador que me contacte
+            para que desta forma pueda decidir sobre su solicitud de contratacion
+            IN: ID del empleador a buscar
+            OUT: Calificacion total del empleador
+            </summary>
+        </member>
+    </members>
+</doc>

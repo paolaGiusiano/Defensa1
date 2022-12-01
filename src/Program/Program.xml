@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Program</name>
+    </assembly>
+    <members>
+        <member name="T:CoreBot.Program">
+            <summary>
+            Un programa que implementa un bot de Telegram.
+            </summary>
+        </member>
+        <member name="F:CoreBot.Program.Bot">
+            <summary>
+            La instancia del bot.
+            </summary>
+        </member>
+        <member name="M:CoreBot.Program.Main(System.String[])">
+            <summary>
+            Punto de entrada al programa.
+            </summary>
+        </member>
+        <member name="M:CoreBot.Program.HandleUpdateAsync(Telegram.Bot.ITelegramBotClient,Telegram.Bot.Types.Update,System.Threading.CancellationToken)">
+            <summary>
+            Maneja las actualizaciones del bot (todo lo que llega), incluyendo mensajes, ediciones de mensajes,
+            respuestas a botones, etc. En este ejemplo sólo manejamos mensajes de texto.
+            </summary>
+        </member>
+        <member name="M:CoreBot.Program.HandleErrorAsync(Telegram.Bot.ITelegramBotClient,System.Exception,System.Threading.CancellationToken)">
+            <summary>
+            Metodo que maneja un error del bot
+            </summary>
+        </member>
+    </members>
+</doc>

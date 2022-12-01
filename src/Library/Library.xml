@@ -1,0 +1,2757 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Library</name>
+    </assembly>
+    <members>
+        <member name="T:CoreBot.Administrador">
+            <summary>
+            Clase de persona que representa al administrador del sistema
+            </summary>
+        </member>
+        <member name="M:CoreBot.Administrador.#ctor">
+            <summary>
+            Constructor vacio para clases de utilidad y testing
+            </summary>
+        </member>
+        <member name="M:CoreBot.Administrador.#ctor(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Constructor de la instancia de Administrador
+            </summary>
+            <param name="nombre"></param>
+            <param name="apellido"></param>
+            <param name="email"></param>
+            <param name="password"></param>
+            <param name="id">ID unico del usuario proporcionado por Telegram</param>
+        </member>
+        <member name="T:CoreBot.Calificacion">
+            <summary>
+            Clase que representa la calificacion con la que contaran los contratos en el sistema
+            </summary>
+        </member>
+        <member name="P:CoreBot.Calificacion.FechaCreacion">
+            <summary>
+            Almacena la fecha de creacion
+            </summary>
+        </member>
+        <member name="M:CoreBot.Calificacion.#ctor">
+            <summary>
+            Constructor de la clase calificacion
+            </summary>
+        </member>
+        <member name="P:CoreBot.Calificacion.Valor">
+            <summary>
+            Almacena el valor de la calificacion
+            </summary>
+        </member>
+        <member name="M:CoreBot.Calificacion.CalcularCalificacion">
+            <summary>
+            Devuelve la calificacion
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CoreBot.Calificacion.AgregarCalificacion(System.Int32)">
+            <summary>
+            Retorna la calificacion con el valor
+            </summary>
+            <param name="calificacion"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CoreBot.CalificacionMayor">
+            <summary>
+            Clase que representa la calificacion con la que contaran los contratos en el sistema
+            </summary>
+        </member>
+        <member name="T:CoreBot.Categoria">
+            <summary>
+            Categoria de un servicio, actua como un tag de la misma
+            </summary>
+        </member>
+        <member name="F:CoreBot.Categoria.Nombre">
+            <summary>
+            Nombre de la categoria del servicio
+            </summary>
+        </member>
+        <member name="M:CoreBot.Categoria.#ctor(System.String)">
+            <summary>
+            Constructor de categoria
+            </summary>
+            <param name="nombre"></param>
+        </member>
+        <member name="T:CoreBot.Contrato">
+            <summary>
+            Clase contrato, la cual se relaciona con servicio, empleador y trabajador
+            </summary>
+        </member>
+        <member name="P:CoreBot.Contrato.ID">
+            <summary>
+            ID unico del contrato
+            </summary>
+        </member>
+        <member name="P:CoreBot.Contrato.Trabajador">
+            <summary>
+            Usuario trabajador del contrato
+            </summary>
+        </member>
+        <member name="P:CoreBot.Contrato.Empleador">
+            <summary>
+            Usuario empleador del contrato
+            </summary>
+        </member>
+        <member name="P:CoreBot.Contrato.Servicio">
+            <summary>
+            Servicio a contratar
+            </summary>
+        </member>
+        <member name="P:CoreBot.Contrato.CostoTotal">
+            <summary>
+            Costo total del contrato
+            </summary>
+        </member>
+        <member name="P:CoreBot.Contrato.FechaFirma">
+            <summary>
+            Fecha en el que el contrato se firmo
+            </summary>
+        </member>
+        <member name="P:CoreBot.Contrato.FechaCierre">
+            <summary>
+            Fecha de cierre del contrato
+            </summary>
+        </member>
+        <member name="P:CoreBot.Contrato.CalificacionEmpleador">
+            <summary>
+            Calificacion que el Trabajador dio al Empleador
+            </summary>
+        </member>
+        <member name="P:CoreBot.Contrato.CalificacionTrabajador">
+            <summary>
+            Calificacion que el Empleador dio al Trabajador
+            </summary>
+        </member>
+        <member name="M:CoreBot.Contrato.#ctor">
+            <summary>
+            Constructor vacio de Contrato para genericos y testing
+            </summary>
+        </member>
+        <member name="M:CoreBot.Contrato.#ctor(CoreBot.Empleador,CoreBot.Servicio)">
+            <summary>
+            Constructor de servicio para un contrato de pago a termino
+            </summary>
+            <param name="empleador">Empleador del servicio</param>
+            <param name="servicio">Servicio a contratar</param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreBot.Contrato.#ctor(CoreBot.Empleador,CoreBot.Servicio,System.Decimal)">
+            <summary>
+            Constructor de servicio para costo por hora
+            </summary>
+            <param name="empleador">Empleador a contratar el servicio</param>
+            <param name="servicio">Servicio a contratar</param>
+            <param name="horas">Cantidad de horas a contratar</param>
+        </member>
+        <member name="M:CoreBot.Contrato.CalificarContratoEmpleador(CoreBot.Empleador,CoreBot.Calificacion)">
+            <summary>
+            Se separa la funcionalidad de calificar un usuario en calificar un empleador para cumplir con OCP y reducir acoplamiento
+            </summary>
+            <param name="empleador">El empleador a ser calificado</param>
+            <param name="calificacion">La calificacion a ser agregada</param>
+        </member>
+        <member name="M:CoreBot.Contrato.CalificarContratoTrabajador(CoreBot.Trabajador,CoreBot.Calificacion)">
+            <summary>
+            Se separa la funcionalidad de calificar un usuario en calificar un trabajador para cumplir con OCP y reducir acoplamiento
+            </summary>
+            <param name="trabajador">El trabajador a ser calificado</param>
+            <param name="calificacion">La calificacion a ser agregada</param>
+        </member>
+        <member name="M:CoreBot.Contrato.CalcularCosto(CoreBot.Servicio,System.Decimal)">
+            <summary>
+            Calculadora de costo total para servicio con costo por hora
+            </summary>
+            <param name="servicio">Servicio siendo contratado</param>
+            <param name="horas">Cantidad de horas a contratar</param>
+            <returns></returns>
+        </member>
+        <member name="T:CoreBot.Empleador">
+            <summary>
+            La clase Empleador contiene la informacion del usuario que utilizara la plataforma para contratar los servicios de otros usuarios
+            </summary>
+        </member>
+        <member name="M:CoreBot.Empleador.#ctor">
+            <summary>
+            Constructor vacio de empleador para testing y genericos
+            </summary>
+        </member>
+        <member name="M:CoreBot.Empleador.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Constructor de la clase Empleador
+            </summary>
+            <param name="nombre"></param>
+            <param name="apellido"></param>
+            <param name="email"></param>
+            <param name="telefono"></param>
+            <param name="direccion"></param>
+            <param name="contraseña"></param>
+            <param name="id">ID unico del usuario proporcionado por Telegram</param>
+        </member>
+        <member name="T:CoreBot.Notificacion">
+            <summary>
+            Notificacion individual que el usuario recibe
+            </summary>
+        </member>
+        <member name="P:CoreBot.Notificacion.Leido">
+            <summary>
+            Booleano que define si la notificacion fue leida o no
+            </summary>
+        </member>
+        <member name="P:CoreBot.Notificacion.FechaEnviado">
+            <summary>
+            Fecha en la que la notificacion fue enviada
+            </summary>
+        </member>
+        <member name="P:CoreBot.Notificacion.FechaLeido">
+            <summary>
+            Fecha en la que la notificacion fue leida
+            </summary>
+        </member>
+        <member name="P:CoreBot.Notificacion.Mensaje">
+            <summary>
+            Mensaje de la notificacion
+            </summary>
+        </member>
+        <member name="M:CoreBot.Notificacion.#ctor(System.String)">
+            <summary>
+            Constructor de la notificacion
+            </summary>
+            <param name="mensaje">Mensaje a crear la notificacion</param>
+        </member>
+        <member name="M:CoreBot.Notificacion.MarcarLeido">
+            <summary>
+            Metodo que marca la notificacion como leida
+            </summary>
+        </member>
+        <member name="M:CoreBot.Notificacion.ToString">
+            <summary>
+            Metodo que hace un override a ToString para devolver la informacion de la notificacion en un string
+            </summary>
+            <returns>Un string con la fecha enviada y el mensaje</returns>
+        </member>
+        <member name="T:CoreBot.Persona">
+            <summary>
+            Clase persona la cual contiene atributos que tienen todos los usuarios del sistema
+            </summary>
+        </member>
+        <member name="P:CoreBot.Persona.ID">
+            <summary>
+            ID unico de una persona, sea Admin, Trabajador o Empleador. Normalmente, el ID sera proporcionado por Telegram
+            </summary>
+        </member>
+        <member name="P:CoreBot.Persona.Nombre">
+            <summary>
+            Nombre de la persona
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:CoreBot.Persona.Apellido">
+            <summary>
+            Apellido de la persona
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:CoreBot.Persona.Email">
+            <summary>
+            Email de la persona, el cuál es único
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:CoreBot.Persona.Contraseña">
+            <summary>
+            Contraseña de la persona
+            </summary>
+        </member>
+        <member name="F:CoreBot.Persona.Notificaciones">
+            <summary>
+            Lista de notificaciones del usuario
+            </summary>
+        </member>
+        <member name="M:CoreBot.Persona.GetCampoUnico">
+            <summary>
+            Buscador de ID unica del sistema
+            </summary>
+        </member>
+        <member name="T:CoreBot.Servicio">
+            <summary>
+            Clase servicio la cual contiene detalles acerca de como será el servicio prestado y algunos metodos para la modificación del mismo
+            </summary>
+        </member>
+        <member name="P:CoreBot.Servicio.Id">
+            <summary>
+            Id del servicio
+            </summary>
+        </member>
+        <member name="P:CoreBot.Servicio.Categoria">
+            <summary>
+            Categoria del servicio
+            </summary>
+        </member>
+        <member name="P:CoreBot.Servicio.Pago">
+            <summary>
+            Método de pago del servicio, el cual puede ser credito o debito por ejemplo
+            </summary>
+        </member>
+        <member name="P:CoreBot.Servicio.Cost">
+            <summary>
+            Tipo de costo del servicio, el cual puede ser de momento por hora o costo total del servicio
+            </summary>
+        </member>
+        <member name="P:CoreBot.Servicio.DescripcionServicio">
+            <summary>
+            Descripción que contiene el servicio
+            </summary>
+        </member>
+        <member name="P:CoreBot.Servicio.Costo">
+            <summary>
+            Costo del servicio
+            </summary>
+        </member>
+        <member name="M:CoreBot.Servicio.#ctor">
+            <summary>
+            Constructor vacio para testing y genericos
+            </summary>
+        </member>
+        <member name="M:CoreBot.Servicio.#ctor(System.Int32,System.String,CoreBot.Payment,CoreBot.Costo,CoreBot.Trabajador,CoreBot.Categoria,System.Decimal)">
+            <summary>
+            Constructor de servicio con sus respectivos parametros
+            </summary>
+            <param name="id">Id unica del servicio</param>
+            <param name="DescripcionServicio">Descripcion del servicio entrada por el usuario</param>
+            <param name="pago">Tipo de pago para el servicio</param>
+            <param name="cost">Forma de calcular el costo del servicio (por hora o a termino)</param>
+            <param name="trabajador">Trabajador a cargo del servicio</param>
+            <param name="categoria">Categoria del servicio</param>
+            <param name="costo">Valor monetario a pagar por el servicio</param>
+        </member>
+        <member name="P:CoreBot.Servicio.Trabajador">
+            <summary>
+            Trabajador el cual crea el servicio
+            </summary>
+        </member>
+        <member name="M:CoreBot.Servicio.ActualizarServicio(CoreBot.Categoria,CoreBot.Payment,CoreBot.Costo)">
+            <summary>
+            Metodo que sirve para actualizar el servicio
+            </summary>
+        </member>
+        <member name="M:CoreBot.Servicio.ModificarCategoria(CoreBot.Categoria)">
+            <summary>
+            Metodo exclusivo para modificar una categoría
+            </summary>
+            <param name="categoria"></param>
+        </member>
+        <member name="M:CoreBot.Servicio.AgregarServicio(CoreBot.Servicio,CoreBot.Trabajador)">
+            <summary>
+            Metodo para agregar un servicio a la lista de servicios del trabajador correspondiente
+            </summary>
+            <param name="servicio"></param>
+            <param name="trabajador"></param>
+        </member>
+        <member name="M:CoreBot.Servicio.ToString">
+            <summary>
+            Override de la funcion to string para evitar que muestre el nombre de clase en la visualización
+            </summary>
+            <returns>Un string conteniendo todos los parametros del servicio</returns>
+        </member>
+        <member name="T:CoreBot.Trabajador">
+            <summary>
+            La clase Trabajador contiene la informacion del usuario que utilizara la plataforma para ofrecer los servicios a otros usuarios
+            </summary>
+        </member>
+        <member name="P:CoreBot.Trabajador.Servicios">
+            <summary>
+            Lista de servicios que contiene el respectivo trabajador
+            </summary>
+        </member>
+        <member name="M:CoreBot.Trabajador.#ctor">
+            <summary>
+            Constructor vacio del trabajador para testing y clases de utilidad
+            </summary>
+        </member>
+        <member name="M:CoreBot.Trabajador.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Constructor del trabajador con sus respectivos parametros
+            </summary>
+            <param name="nombre"></param>
+            <param name="apellido"></param>
+            <param name="email"></param>
+            <param name="telefono"></param>
+            <param name="direccion"></param>
+            <param name="contraseña"></param>
+            <param name="id">ID unico del usuario proporcionado por Telegram</param>
+        </member>
+        <member name="T:CoreBot.Usuario">
+            <summary>
+            Clase que define usuarios Empleadores y Trabajadores
+            </summary>
+        </member>
+        <member name="P:CoreBot.Usuario.Telefono">
+            <summary>
+            Telefono del usuario
+            </summary>
+        </member>
+        <member name="P:CoreBot.Usuario.Direccion">
+            <summary>
+            Direccion de alojamiento del usuario
+            </summary>
+        </member>
+        <member name="P:CoreBot.Usuario.CalificacionTotal">
+            <summary>
+            Calificacion total del usuario, promedio de todas las calificaciones
+            </summary>
+        </member>
+        <member name="P:CoreBot.Usuario.Calificaciones">
+            <summary>
+            Lista de todas las calificaciones del usuario
+            </summary>
+        </member>
+        <member name="M:CoreBot.Usuario.ModificarUsuario(System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Metodo modificador del objeto
+            </summary>
+            <param name="nombre"></param>
+            <param name="apellido"></param>
+            <param name="email"></param>
+            <param name="telefono"></param>
+            <param name="direccion"></param>
+            <param name="contraseña"></param>
+        </member>
+        <member name="M:CoreBot.Usuario.BorrarUsuario">
+            <summary>
+            Metodo destructor del objeto
+            </summary>
+        </member>
+        <member name="M:CoreBot.Usuario.AgregarCalificacion(CoreBot.Calificacion)">
+            <summary>
+            Metodo que agrega una calificacion al usuario
+            </summary>
+            <param name="calificacion">Calificacion a ser agregada</param>
+        </member>
+        <member name="M:CoreBot.Usuario.CalcularCalificacion">
+            <summary>
+            Metodo que funciona para calcular la calificacion total dentro de la lista de calificaciones
+            </summary>   
+        </member>
+        <member name="M:CoreBot.Usuario.ToString">
+            <summary>
+            Override del metodo ToString que convierte el Usuario a un string
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:CoreBot.BotException">
+            <summary>
+            Clase Base de Excepcion
+            </summary>
+        </member>
+        <member name="P:CoreBot.BotException.CUSTOMMESSAGE">
+            <summary>
+            Mensaje que se mostrara al usuario
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:CoreBot.BotException.#ctor">
+            <summary>
+            Constructor de la clase principal de excepciones.
+            </summary>
+        </member>
+        <member name="M:CoreBot.BotException.Precondicion(System.Boolean,System.String)">
+            <summary>
+            Checker de precondiciones de un metodo
+            </summary>
+            <param name="condicion"></param>
+            <param name="mensaje"></param>
+        </member>
+        <member name="M:CoreBot.BotException.Postcondicion(System.Boolean,System.String)">
+            <summary>
+            Checker de postcondiciones de un metodo
+            </summary>
+            <param name="condicion"></param>
+            <param name="mensaje"></param>
+        </member>
+        <member name="M:CoreBot.BotException.Invariante(System.Boolean,System.String)">
+            <summary>
+            Checker de invariantes de un metodo
+            </summary>
+            <param name="condicion"></param>
+            <param name="mensaje"></param>
+        </member>
+        <member name="T:CoreBot.InvalidInteger">
+            <summary>
+            Clase con la responsablididad de detectar un tipo especifico de error, e informar cual es.
+            </summary>
+        </member>
+        <member name="M:CoreBot.InvalidInteger.#ctor">
+            <summary>
+            Excepcion de servico no encontrado.
+            </summary>
+        </member>
+        <member name="T:CoreBot.ParameterError">
+            <summary>
+            Clase con la responsablididad de detectar un tipo especifico de error, e informar cual es.
+            </summary>
+        </member>
+        <member name="M:CoreBot.ParameterError.#ctor">
+            <summary>
+            Excepcion de servico no encontrado.
+            </summary>
+        </member>
+        <member name="T:CoreBot.ServicionoEncontradoException">
+            <summary>
+            Clase con la responsablididad de detectar un tipo especifico de error, e informar cual es.
+            </summary>
+        </member>
+        <member name="M:CoreBot.ServicionoEncontradoException.#ctor">
+            <summary>
+            Excepcion de servico no encontrado.
+            </summary>
+        </member>
+        <member name="T:CoreBot.AgregarAdminHandler">
+            <summary>
+            Un handler del patron chain of responsability que implementa el comando de "buscar servicio"
+            </summary>
+        </member>
+        <member name="P:CoreBot.AgregarAdminHandler.State">
+            <summary>
+            Estado del comando
+            </summary>
+        </member>
+        <member name="P:CoreBot.AgregarAdminHandler.Data">
+            <summary>
+            Datos que se van obteniendo del comando
+            </summary>
+        </member>
+        <member name="F:CoreBot.AgregarAdminHandler.buscadorUsuarios">
+            <summary>
+            Buscador de usuarios singleton que busca un usuario en la lista de todos los usuarios
+            </summary>
+        </member>
+        <member name="F:CoreBot.AgregarAdminHandler.gestorUsuario">
+            <summary>
+            Gestor de usuarios singleton
+            </summary>
+        </member>
+        <member name="M:CoreBot.AgregarAdminHandler.#ctor(CoreBot.BaseHandler)">
+            <summary>
+            Constructor que implementa el base de los handlers
+            </summary>
+            <param name="next">Siguiente handler a pasar el comando de no procesarlo</param>
+        </member>
+        <member name="M:CoreBot.AgregarAdminHandler.CanHandle(Telegram.Bot.Types.Message)">
+            <summary>
+            Override de la clase base de los handlers para chequear si el mensaje puede ser procesado
+            </summary>
+            <param name="message">Mensaje recibido del usuario</param>
+            <returns>True si se puede procesar</returns>
+        </member>
+        <member name="M:CoreBot.AgregarAdminHandler.InternalHandle(Telegram.Bot.Types.Message,System.String@)">
+            <summary>
+            Procesa todos los mensajes y retorna true siempre.
+            </summary>
+            <param name="message">El mensaje a procesar.</param>
+            <param name="response">La respuesta al mensaje procesado.</param>
+        </member>
+        <member name="M:CoreBot.AgregarAdminHandler.InternalCancel">
+            <summary>
+            Retorna este "handler" al estado inicial.
+            </summary>
+        </member>
+        <member name="T:CoreBot.AgregarAdminHandler.AgregarAdminState">
+            <summary>
+            Lista de enum con cada estado del comando
+            </summary>
+        </member>
+        <member name="F:CoreBot.AgregarAdminHandler.AgregarAdminState.Start">
+            <summary>
+            Estado inicial del comando
+            </summary>
+        </member>
+        <member name="F:CoreBot.AgregarAdminHandler.AgregarAdminState.SecretPrompt">
+            <summary>
+            Estado en el que se espera el secret word para permitir la creacion de un admin
+            </summary>
+        </member>
+        <member name="F:CoreBot.AgregarAdminHandler.AgregarAdminState.NombrePrompt">
+            <summary>
+            Estado en el que se espera el nombre del nuevo admin
+            </summary>
+        </member>
+        <member name="F:CoreBot.AgregarAdminHandler.AgregarAdminState.ApellidoPrompt">
+            <summary>
+            Estado en el que se espera el apellido del nuevo admin
+            </summary>
+        </member>
+        <member name="F:CoreBot.AgregarAdminHandler.AgregarAdminState.EmailPrompt">
+            <summary>
+            Estado en el que se espera el email del nuevo admin
+            </summary>
+        </member>
+        <member name="F:CoreBot.AgregarAdminHandler.AgregarAdminState.PasswordPrompt">
+            <summary>
+            Estado en el que se espera el password del nuevo admin
+            </summary>
+        </member>
+        <member name="F:CoreBot.AgregarAdminHandler.AgregarAdminState.CrearAdmin">
+            <summary>
+            Estado en el que se crea el admin
+            </summary>
+        </member>
+        <member name="T:CoreBot.AgregarAdminHandler.AgregarAdminData">
+            <summary>
+            Clase que almacena la informacion a ser usada por el comando
+            </summary>
+        </member>
+        <member name="F:CoreBot.AgregarAdminHandler.AgregarAdminData.Key">
+            <summary>
+            Key que valida que el usuario puede crear un admin (es un admin o parte del equipo de desarrollo)
+            </summary>
+        </member>
+        <member name="F:CoreBot.AgregarAdminHandler.AgregarAdminData.Nombre">
+            <summary>
+            Nombre del admin
+            </summary>
+        </member>
+        <member name="F:CoreBot.AgregarAdminHandler.AgregarAdminData.Apellido">
+            <summary>
+            Apellido del admin
+            </summary>
+        </member>
+        <member name="F:CoreBot.AgregarAdminHandler.AgregarAdminData.Email">
+            <summary>
+            Email del admin
+            </summary>
+        </member>
+        <member name="F:CoreBot.AgregarAdminHandler.AgregarAdminData.Password">
+            <summary>
+            Password del admin
+            </summary>
+        </member>
+        <member name="T:CoreBot.BaseHandler">
+            <summary>
+            Clase base para implementar el patrón Chain of Responsibility. Esta clase base implmementa 
+            la responsabilidad de recibir el mensaje y pasarlo al siguiente handler en caso que el 
+            mensaje no sea procesado. La responsabilidad de decidir si el mensaje se procesa o no, y
+            de procesarlo, se delega a las clases sucesoras de esta clase base
+            </summary>
+        </member>
+        <member name="P:CoreBot.BaseHandler.Next">
+            <summary>
+            Obtiene el próximo handler
+            </summary>
+            <value>El handler que será invocado si este handler no procesa el mensaje</value>
+        </member>
+        <member name="P:CoreBot.BaseHandler.Keywords">
+            <summary>
+            Obtiene o asigna el conjunto de palabras clave que este handler puede procesar
+            </summary>
+            <value>Un array de palabras clave</value>
+        </member>
+        <member name="M:CoreBot.BaseHandler.#ctor(CoreBot.IHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:CoreBot.BaseHandler"/>.
+            </summary>
+            <param name="next">El próximo handler</param>
+        </member>
+        <member name="M:CoreBot.BaseHandler.#ctor(System.String[],CoreBot.IHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:CoreBot.BaseHandler"/> con una lista de comandos.
+            </summary>
+            <param name="keywords">La lista de comandos.</param>
+            <param name="next">El próximo "handler".</param>
+        </member>
+        <member name="M:CoreBot.BaseHandler.InternalHandle(Telegram.Bot.Types.Message,System.String@)">
+            <summary>
+            Este método debe ser sobreescrito por las clases sucesores. La clase sucesora procesa el mensaje y retorna
+            la respuesta al mensaje.
+            </summary>
+            <param name="message">El mensaje a procesar.</param>
+            <param name="response">La respuesta al mensaje procesado.</param>
+            <returns>true si el mensaje fue procesado; false en caso contrario</returns>
+        </member>
+        <member name="M:CoreBot.BaseHandler.InternalCancel">
+            <summary>
+            Este método puede ser sobreescrito en las clases sucesores que procesan varios mensajes cambiando de estado
+            entre mensajes deben sobreescribir este método para volver al estado inicial. En la clase base no hace nada.
+            </summary>
+        </member>
+        <member name="M:CoreBot.BaseHandler.CanHandle(Telegram.Bot.Types.Message)">
+            <summary>
+            Determina si este "handler" puede procesar el mensaje. En la clase base se utiliza el array
+            <see cref="P:CoreBot.BaseHandler.Keywords"/> para buscar el texto en el mensaje ignorando mayúsculas y minúsculas. Las
+            clases sucesores pueden sobreescribir este método para proveer otro mecanismo para determina si procesan o no
+            un mensaje.
+            </summary>
+            <param name="message">El mensaje a procesar.</param>
+            <returns>true si el mensaje puede ser pocesado; false en caso contrario.</returns>
+        </member>
+        <member name="M:CoreBot.BaseHandler.Handle(Telegram.Bot.Types.Message,System.String@)">
+            <summary>
+            Procesa el mensaje o la pasa al siguiente "handler" si existe.
+            </summary>
+            <param name="message">El mensaje a procesar.</param>
+            <param name="response">La respuesta al mensaje procesado.</param>
+            <returns>El "handler" que procesó el mensaje si el mensaje fue procesado; null en caso contrario.</returns>
+        </member>
+        <member name="M:CoreBot.BaseHandler.Cancel">
+            <summary>
+            Retorna este "handler" al estado inicial. En los "handler" sin estado no hace nada. Los "handlers" que
+            procesan varios mensajes cambiando de estado entre mensajes deben sobreescribir este método para volver al
+            estado inicial.
+            </summary>
+        </member>
+        <member name="T:CoreBot.BuscarServicioHandler">
+            <summary>
+            Un handler del patron chain of responsability que implementa el comando de "buscar servicio"
+            </summary>
+        </member>
+        <member name="P:CoreBot.BuscarServicioHandler.State">
+            <summary>
+            Estado del comando
+            </summary>
+        </member>
+        <member name="P:CoreBot.BuscarServicioHandler.Data">
+            <summary>
+            Datos que se van obteniendo del comando
+            </summary>
+        </member>
+        <member name="F:CoreBot.BuscarServicioHandler.buscadorServicios">
+            <summary>
+            Buscador de servicios singleton que busca un servicios en la lista de todos los servicios
+            </summary>
+        </member>
+        <member name="F:CoreBot.BuscarServicioHandler.buscadorUsuarios">
+            <summary>
+            Buscador de usuarios singleton que busca un usuario en la lista de todos los usuarios
+            </summary>
+        </member>
+        <member name="M:CoreBot.BuscarServicioHandler.#ctor(CoreBot.BaseHandler)">
+            <summary>
+            Constructor que implementa el base de los handlers
+            </summary>
+            <param name="next">Siguiente handler a pasar el comando de no procesarlo</param>
+        </member>
+        <member name="M:CoreBot.BuscarServicioHandler.CanHandle(Telegram.Bot.Types.Message)">
+            <summary>
+            Override de la clase base de los handlers para chequear si el mensaje puede ser procesado
+            </summary>
+            <param name="message">Mensaje recibido del usuario</param>
+            <returns>True si se puede procesar</returns>
+        </member>
+        <member name="M:CoreBot.BuscarServicioHandler.InternalHandle(Telegram.Bot.Types.Message,System.String@)">
+            <summary>
+            Procesa todos los mensajes y retorna true siempre.
+            </summary>
+            <param name="message">El mensaje a procesar.</param>
+            <param name="response">La respuesta al mensaje procesado.</param>
+        </member>
+        <member name="M:CoreBot.BuscarServicioHandler.InternalCancel">
+            <summary>
+            Retorna este "handler" al estado inicial.
+            </summary>
+        </member>
+        <member name="T:CoreBot.BuscarServicioHandler.BuscarServicioState">
+            <summary>
+            Lista de enum con cada estado del comando
+            </summary>
+        </member>
+        <member name="F:CoreBot.BuscarServicioHandler.BuscarServicioState.Start">
+            <summary>
+            Estado inicial del comando
+            </summary>
+        </member>
+        <member name="F:CoreBot.BuscarServicioHandler.BuscarServicioState.KeywordPrompt">
+            <summary>
+            Estado en el que se espera la keyword por la que se buscara el servicio
+            </summary>
+        </member>
+        <member name="F:CoreBot.BuscarServicioHandler.BuscarServicioState.PreOrdenPrompt">
+            <summary>
+            Estado en el que se espera un si o no del usuario a la opcion de ordenar la lista de salida
+            </summary>
+        </member>
+        <member name="F:CoreBot.BuscarServicioHandler.BuscarServicioState.OrdenPrompt">
+            <summary>
+            Estado en el que se espera como el usuario quiere ordenar la lista
+            </summary>
+        </member>
+        <member name="F:CoreBot.BuscarServicioHandler.BuscarServicioState.BuscarServicios">
+            <summary>
+            Estado en el que se busca la lista de servicios
+            </summary>
+        </member>
+        <member name="T:CoreBot.BuscarServicioHandler.BuscarServicioData">
+            <summary>
+            Clase que almacena la informacion a ser usada por el comando
+            </summary>
+        </member>
+        <member name="F:CoreBot.BuscarServicioHandler.BuscarServicioData.Keyword">
+            <summary>
+            Keyword de busqueda
+            </summary>
+        </member>
+        <member name="F:CoreBot.BuscarServicioHandler.BuscarServicioData.Orden">
+            <summary>
+            Orden en el que se ordenara el resultado de la busqueda
+            </summary>
+        </member>
+        <member name="F:CoreBot.BuscarServicioHandler.BuscarServicioData.ResultadoServicio">
+            <summary>
+            Lista resultado de la busqueda en forma de servicios
+            </summary>
+        </member>
+        <member name="F:CoreBot.BuscarServicioHandler.BuscarServicioData.ResultadoString">
+            <summary>
+            Lista resultado de la busqueda en forma de strings
+            </summary>
+        </member>
+        <member name="T:CoreBot.BuscarUsuarioHandler">
+            <summary>
+            Handler que maneja el comando "buscar usuario" para implementar Chain of Responsability
+            </summary>
+        </member>
+        <member name="P:CoreBot.BuscarUsuarioHandler.State">
+            <summary>
+            Estado del comando
+            </summary>
+        </member>
+        <member name="P:CoreBot.BuscarUsuarioHandler.Data">
+            <summary>
+            Datos que se van obteniendo del comando
+            </summary>
+        </member>
+        <member name="F:CoreBot.BuscarUsuarioHandler.buscadorUsuarios">
+            <summary>
+            Buscador de usuarios singleton que busca un usuario en la lista de todos los usuarios
+            </summary>
+        </member>
+        <member name="M:CoreBot.BuscarUsuarioHandler.#ctor(CoreBot.BaseHandler)">
+            <summary>
+            Constructor que implementa el base de los handlers
+            </summary>
+            <param name="next">Siguiente handler a pasar el comando de no procesarlo</param>
+        </member>
+        <member name="M:CoreBot.BuscarUsuarioHandler.CanHandle(Telegram.Bot.Types.Message)">
+            <summary>
+            Override de la clase base de los handlers para chequear si el mensaje puede ser procesado
+            </summary>
+            <param name="message">Mensaje recibido del usuario</param>
+            <returns>True si se puede procesar</returns>
+        </member>
+        <member name="M:CoreBot.BuscarUsuarioHandler.InternalHandle(Telegram.Bot.Types.Message,System.String@)">
+            <summary>
+            Procesa todos los mensajes y retorna true siempre.
+            </summary>
+            <param name="message">El mensaje a procesar.</param>
+            <param name="response">La respuesta al mensaje procesado.</param>
+        </member>
+        <member name="M:CoreBot.BuscarUsuarioHandler.InternalCancel">
+            <summary>
+            Retorna este "handler" al estado inicial.
+            </summary>
+        </member>
+        <member name="T:CoreBot.BuscarUsuarioHandler.BuscarUsuarioState">
+            <summary>
+            Lista de enum con cada estado del comando
+            </summary>
+        </member>
+        <member name="F:CoreBot.BuscarUsuarioHandler.BuscarUsuarioState.Start">
+            <summary>
+            Estado inicial del comando
+            </summary>
+        </member>
+        <member name="F:CoreBot.BuscarUsuarioHandler.BuscarUsuarioState.BusquedaPrompt">
+            <summary>
+            Estado en el que se espera la forma por la que se quiere buscar el usuario (ID o Email)
+            </summary>
+        </member>
+        <member name="F:CoreBot.BuscarUsuarioHandler.BuscarUsuarioState.EmailPrompt">
+            <summary>
+            Estado en el que se espera el email del usuario a buscar
+            </summary>
+        </member>
+        <member name="F:CoreBot.BuscarUsuarioHandler.BuscarUsuarioState.IDPrompt">
+            <summary>
+            Estado en el que se espera el ID del usuario a buscar
+            </summary>
+        </member>
+        <member name="F:CoreBot.BuscarUsuarioHandler.BuscarUsuarioState.BuscarUsuarioID">
+            <summary>
+            Estado en el que se busca al usuario por ID
+            </summary>
+        </member>
+        <member name="F:CoreBot.BuscarUsuarioHandler.BuscarUsuarioState.BuscarUsuarioEmail">
+            <summary>
+            Estado en el que se busca al usuario por email
+            </summary>
+        </member>
+        <member name="T:CoreBot.BuscarUsuarioHandler.BuscarUsuarioData">
+            <summary>
+            Clase interna que almacena la data proveida por el usuario
+            </summary>
+        </member>
+        <member name="F:CoreBot.BuscarUsuarioHandler.BuscarUsuarioData.FormaBusqueda">
+            <summary>
+            Forma en la que se quiere buscar, email o ID
+            </summary>
+        </member>
+        <member name="F:CoreBot.BuscarUsuarioHandler.BuscarUsuarioData.Email">
+            <summary>
+            Email del usuario a buscar
+            </summary>
+        </member>
+        <member name="F:CoreBot.BuscarUsuarioHandler.BuscarUsuarioData.ID">
+            <summary>
+            ID del usuario a buscar
+            </summary>
+        </member>
+        <member name="T:CoreBot.ContratarServicioHandler">
+            <summary>
+            Un handler del patron chain of responsability que implementa el comando de "contratar servicio"
+            </summary>
+        </member>
+        <member name="P:CoreBot.ContratarServicioHandler.State">
+            <summary>
+            Estado del comando
+            </summary>
+        </member>
+        <member name="P:CoreBot.ContratarServicioHandler.Data">
+            <summary>
+            Datos que se van obteniendo del comando
+            </summary>
+        </member>
+        <member name="F:CoreBot.ContratarServicioHandler.gestorContratos">
+            <summary>
+            Gestor de contratos singleton que posee la lista de contratos y se encarga de crear nuevos
+            </summary>
+        </member>
+        <member name="F:CoreBot.ContratarServicioHandler.buscadorServicios">
+            <summary>
+            Buscador de servicios singleton que busca un servicios en la lista de todos los servicios
+            </summary>
+        </member>
+        <member name="F:CoreBot.ContratarServicioHandler.buscadorUsuarios">
+            <summary>
+            Buscador de usuarios singleton que busca un usuario en la lista de todos los usuarios
+            </summary>
+        </member>
+        <member name="F:CoreBot.ContratarServicioHandler.gestorCategorias">
+            <summary>
+            Gestor de categorias singleton que posee la lista de categorias y se encarga de crear nuevas
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CoreBot.ContratarServicioHandler.#ctor(CoreBot.BaseHandler)">
+            <summary>
+            Constructor que implementa el base de los handlers
+            </summary>
+            <param name="next">Siguiente handler a pasar el comando de no procesarlo</param>
+        </member>
+        <member name="M:CoreBot.ContratarServicioHandler.CanHandle(Telegram.Bot.Types.Message)">
+            <summary>
+            Override de la clase base de los handlers para chequear si el mensaje puede ser procesado
+            </summary>
+            <param name="message">Mensaje recibido del usuario</param>
+            <returns>True si se puede procesar</returns>
+        </member>
+        <member name="M:CoreBot.ContratarServicioHandler.InternalHandle(Telegram.Bot.Types.Message,System.String@)">
+            <summary>
+            Procesa todos los mensajes y retorna true siempre.
+            </summary>
+            <param name="message">El mensaje a procesar.</param>
+            <param name="response">La respuesta al mensaje procesado.</param>
+        </member>
+        <member name="M:CoreBot.ContratarServicioHandler.InternalCancel">
+            <summary>
+            Retorna este "handler" al estado inicial.
+            </summary>
+        </member>
+        <member name="T:CoreBot.ContratarServicioHandler.ContratarServicioState">
+            <summary>
+            Lista de enum con cada estado del comando
+            </summary>
+        </member>
+        <member name="F:CoreBot.ContratarServicioHandler.ContratarServicioState.Start">
+            <summary>
+            Estado inicial del comando
+            </summary>
+        </member>
+        <member name="F:CoreBot.ContratarServicioHandler.ContratarServicioState.BusquedaServicioPrompt">
+            <summary>
+            Estado del comando en el que se espera un si o no a la pregunta si el usuario sabe el ID del servicio
+            </summary>
+        </member>
+        <member name="F:CoreBot.ContratarServicioHandler.ContratarServicioState.IdPrompt">
+            <summary>
+            Estado del comando en el que se espera un ID del servicio
+            </summary>
+        </member>
+        <member name="F:CoreBot.ContratarServicioHandler.ContratarServicioState.DescripcionPrompt">
+            <summary>
+            Estado del comando en el que se espera que el usuario inserte la descripcion de un servicio
+            </summary>
+        </member>
+        <member name="F:CoreBot.ContratarServicioHandler.ContratarServicioState.CategoriaPrompt">
+            <summary>
+            Estado del comando en el que se espera que el usuario inserte la categoria de un servicio
+            </summary>
+        </member>
+        <member name="F:CoreBot.ContratarServicioHandler.ContratarServicioState.PagoPrompt">
+            <summary>
+            Estado del comando en el que se espera que el usuario inserte el tipo de pago de un servicio
+            </summary>
+        </member>
+        <member name="F:CoreBot.ContratarServicioHandler.ContratarServicioState.CostoPrompt">
+            <summary>
+            Estado del comando en el que se espera que el usuario inserte la forma en la que se calcula el costo de un servicio
+            </summary>
+        </member>
+        <member name="F:CoreBot.ContratarServicioHandler.ContratarServicioState.EmailPrompt">
+            <summary>
+            Estado del comando en el que se espera el email del trabajador duenho del servicio
+            </summary>
+        </member>
+        <member name="F:CoreBot.ContratarServicioHandler.ContratarServicioState.HoraPrompt">
+            <summary>
+            Estado del comando en el que se espera la cantidad de horas por las cuales se facturara el servicio.
+            Solo seria distinto de cero si el Cost del servicio es Costo_por_hora
+            </summary>
+        </member>
+        <member name="F:CoreBot.ContratarServicioHandler.ContratarServicioState.ContratarServicio">
+            <summary>
+            Estado del comando en el que se contrata un servicio
+            </summary>
+        </member>
+        <member name="T:CoreBot.ContratarServicioHandler.ContratarServicioData">
+            <summary>
+            Clase que almacena la informacion a ser usada por el comando
+            </summary>
+        </member>
+        <member name="P:CoreBot.ContratarServicioHandler.ContratarServicioData.FormaBusqueda">
+            <summary>
+            Flag que determina si el usuario quiere buscar por ID o por parametros
+            </summary>
+            <value>Un string "si" o "no"</value>
+        </member>
+        <member name="P:CoreBot.ContratarServicioHandler.ContratarServicioData.ID">
+            <summary>
+            ID unico del servicio
+            </summary>
+            <value>Un string no vacio</value>
+        </member>
+        <member name="P:CoreBot.ContratarServicioHandler.ContratarServicioData.Descripcion">
+            <summary>
+            Descripcion del servicio
+            </summary>
+            <value>Una string no vacia</value>
+        </member>
+        <member name="P:CoreBot.ContratarServicioHandler.ContratarServicioData.Categoria">
+            <summary>
+            Nombre de la categoria del servicio
+            </summary>
+            <value>Una string no vacia</value>
+        </member>
+        <member name="P:CoreBot.ContratarServicioHandler.ContratarServicioData.Pago">
+            <summary>
+            Tipo de pago del servicio
+            </summary>
+            <value>Valor del enum Payment</value>
+        </member>
+        <member name="P:CoreBot.ContratarServicioHandler.ContratarServicioData.Cost">
+            <summary>
+            Forma de calcular el costo de un servicio (por hora o a termino)
+            </summary>
+            <value>Valor del enum Costo</value>
+        </member>
+        <member name="P:CoreBot.ContratarServicioHandler.ContratarServicioData.Trabajador">
+            <summary>
+            Trabajador duenho del servicio
+            </summary>
+            <value>Un trabajador no vacio</value>
+        </member>
+        <member name="P:CoreBot.ContratarServicioHandler.ContratarServicioData.Hora">
+            <summary>
+            Horas que un servicio por hora va a ser facturado por
+            </summary>
+            <value>Un decimal igual o mayor a cero</value>
+        </member>
+        <member name="P:CoreBot.ContratarServicioHandler.ContratarServicioData.ServicioBuscado">
+            <summary>
+            Servicio que sera contratado
+            </summary>
+            <value>Un servicio no vacio</value>
+        </member>
+        <member name="P:CoreBot.ContratarServicioHandler.ContratarServicioData.NuevoContrato">
+            <summary>
+            Contrato creado
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:CoreBot.CrearCategoriaHandler">
+            <summary>
+            Un handler del patron chain of responsability que implementa el comando de "crear categoria"
+            </summary>
+        </member>
+        <member name="P:CoreBot.CrearCategoriaHandler.State">
+            <summary>
+            Estado del comando
+            </summary>
+        </member>
+        <member name="P:CoreBot.CrearCategoriaHandler.Data">
+            <summary>
+            Datos que se van obteniendo del comando
+            </summary>
+        </member>
+        <member name="F:CoreBot.CrearCategoriaHandler.gestorCategorias">
+            <summary>
+            Gestor de categorias singleton que posee la lista de categorias disponibles
+            </summary>
+        </member>
+        <member name="F:CoreBot.CrearCategoriaHandler.buscadorUsuario">
+            <summary>
+            Buscador de usuarios singleton que busca un usuario en la lista de todos los usuarios
+            </summary>
+        </member>
+        <member name="M:CoreBot.CrearCategoriaHandler.#ctor(CoreBot.BaseHandler)">
+            <summary>
+            Constructor que implementa el base de los handlers
+            </summary>
+            <param name="next">Siguiente handler a pasar el comando de no procesarlo</param>
+        </member>
+        <member name="M:CoreBot.CrearCategoriaHandler.CanHandle(Telegram.Bot.Types.Message)">
+            <summary>
+            Override de la clase base de los handlers para chequear si el mensaje puede ser procesado
+            </summary>
+            <param name="message">Mensaje recibido del usuario</param>
+            <returns>True si se puede procesar o </returns>
+        </member>
+        <member name="M:CoreBot.CrearCategoriaHandler.InternalHandle(Telegram.Bot.Types.Message,System.String@)">
+            <summary>
+            Procesa todos los mensajes y retorna true siempre.
+            </summary>
+            <param name="message">El mensaje a procesar.</param>
+            <param name="response">La respuesta al mensaje procesado indicando que el mensaje no pudo se procesado.</param>
+            <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
+        </member>
+        <member name="M:CoreBot.CrearCategoriaHandler.InternalCancel">
+            <summary>
+            Retorna este "handler" al estado inicial.
+            </summary>
+        </member>
+        <member name="T:CoreBot.CrearCategoriaHandler.CrearCategoriaState">
+            <summary>
+            Lista de enum con cada estado del comando
+            </summary>
+        </member>
+        <member name="F:CoreBot.CrearCategoriaHandler.CrearCategoriaState.Start">
+            <summary>
+            Estado inicial del comando
+            </summary>
+        </member>
+        <member name="F:CoreBot.CrearCategoriaHandler.CrearCategoriaState.CategoriaNombrePrompt">
+            <summary>
+            Estado del comando en el que se espera que el usuario inserte la categoria de un servicio
+            </summary>
+        </member>
+        <member name="T:CoreBot.CrearCategoriaHandler.CrearCategoriaData">
+            <summary>
+            Clase que almacena la informacion a ser usada por el comando
+            </summary>
+        </member>
+        <member name="P:CoreBot.CrearCategoriaHandler.CrearCategoriaData.CategoriaNombre">
+            <summary>
+            Nombre de la categoria del servicio
+            </summary>
+            <value>Una string no vacia</value>
+        </member>
+        <member name="T:CoreBot.CrearServicioHandler">
+            <summary>
+            Un handler del patron chain of responsability que implementa el comando de "crear servicio"
+            </summary>
+        </member>
+        <member name="P:CoreBot.CrearServicioHandler.State">
+            <summary>
+            Estado del comando
+            </summary>
+        </member>
+        <member name="P:CoreBot.CrearServicioHandler.Data">
+            <summary>
+            Datos que se van obteniendo del comando
+            </summary>
+        </member>
+        <member name="F:CoreBot.CrearServicioHandler.gestorServicios">
+            <summary>
+            Gestor de servicios singleton que posee la lista de servicios y se encarga de crear nuevos
+            </summary>
+        </member>
+        <member name="F:CoreBot.CrearServicioHandler.gestorCategorias">
+            <summary>
+            Gestor de categorias singleton que posee la lista de categorias disponibles
+            </summary>
+        </member>
+        <member name="F:CoreBot.CrearServicioHandler.buscadorUsuario">
+            <summary>
+            Buscador de usuarios singleton que busca un usuario en la lista de todos los usuarios
+            </summary>
+        </member>
+        <member name="M:CoreBot.CrearServicioHandler.#ctor(CoreBot.BaseHandler)">
+            <summary>
+            Constructor que implementa el base de los handlers
+            </summary>
+            <param name="next">Siguiente handler a pasar el comando de no procesarlo</param>
+        </member>
+        <member name="M:CoreBot.CrearServicioHandler.CanHandle(Telegram.Bot.Types.Message)">
+            <summary>
+            Override de la clase base de los handlers para chequear si el mensaje puede ser procesado
+            </summary>
+            <param name="message">Mensaje recibido del usuario</param>
+            <returns>True si se puede procesar o </returns>
+        </member>
+        <member name="M:CoreBot.CrearServicioHandler.InternalHandle(Telegram.Bot.Types.Message,System.String@)">
+            <summary>
+            Procesa todos los mensajes y retorna true siempre.
+            </summary>
+            <param name="message">El mensaje a procesar.</param>
+            <param name="response">La respuesta al mensaje procesado indicando que el mensaje no pudo se procesado.</param>
+            <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
+        </member>
+        <member name="M:CoreBot.CrearServicioHandler.InternalCancel">
+            <summary>
+            Retorna este "handler" al estado inicial.
+            </summary>
+        </member>
+        <member name="T:CoreBot.CrearServicioHandler.CrearServicioState">
+            <summary>
+            Lista de enum con cada estado del comando
+            </summary>
+        </member>
+        <member name="F:CoreBot.CrearServicioHandler.CrearServicioState.Start">
+            <summary>
+            Estado inicial del comando
+            </summary>
+        </member>
+        <member name="F:CoreBot.CrearServicioHandler.CrearServicioState.DescripcionPrompt">
+            <summary>
+            Estado del comando en el que se espera que el usuario inserte la descripcion de un servicio
+            </summary>
+        </member>
+        <member name="F:CoreBot.CrearServicioHandler.CrearServicioState.CategoriaPrompt">
+            <summary>
+            Estado del comando en el que se espera que el usuario inserte la categoria de un servicio
+            </summary>
+        </member>
+        <member name="F:CoreBot.CrearServicioHandler.CrearServicioState.PagoPrompt">
+            <summary>
+            Estado del comando en el que se espera que el usuario inserte el tipo de pago de un servicio
+            </summary>
+        </member>
+        <member name="F:CoreBot.CrearServicioHandler.CrearServicioState.CostPrompt">
+            <summary>
+            Estado del comando en el que se espera que el usuario inserte la forma en la que se calcula el costo de un servicio
+            </summary>
+        </member>
+        <member name="F:CoreBot.CrearServicioHandler.CrearServicioState.CostoPrompt">
+            <summary>
+            Estado del comando en el que se espera que el usuario inserte el costo del servicio
+            </summary>
+        </member>
+        <member name="F:CoreBot.CrearServicioHandler.CrearServicioState.CrearServicio">
+            <summary>
+            Estado del comando en el que se crea el servicio
+            </summary>
+        </member>
+        <member name="T:CoreBot.CrearServicioHandler.CrearServicioData">
+            <summary>
+            Clase que almacena la informacion a ser usada por el comando
+            </summary>
+        </member>
+        <member name="P:CoreBot.CrearServicioHandler.CrearServicioData.Descripcion">
+            <summary>
+            Descripcion del servicio
+            </summary>
+            <value>Una string no vacia</value>
+        </member>
+        <member name="P:CoreBot.CrearServicioHandler.CrearServicioData.Categoria">
+            <summary>
+            Nombre de la categoria del servicio
+            </summary>
+            <value>Una string no vacia</value>
+        </member>
+        <member name="P:CoreBot.CrearServicioHandler.CrearServicioData.Pago">
+            <summary>
+            Tipo de pago del servicio
+            </summary>
+            <value>Valor del enum Payment</value>
+        </member>
+        <member name="P:CoreBot.CrearServicioHandler.CrearServicioData.Cost">
+            <summary>
+            Forma de calcular el costo de un servicio (por hora o a termino)
+            </summary>
+            <value>Valor del enum Costo</value>
+        </member>
+        <member name="P:CoreBot.CrearServicioHandler.CrearServicioData.Costo">
+            <summary>
+            Costo del servicio
+            </summary>
+            <value>Un decimal distinto de cero</value>
+        </member>
+        <member name="T:CoreBot.DespedidaHandler">
+            <summary>
+            Handler del patron Chain of Responsability que implementa los comandos de despedida
+            que normalmente marcaran el final de una sesion de usuario con el bot
+            </summary>
+        </member>
+        <member name="M:CoreBot.DespedidaHandler.#ctor(CoreBot.BaseHandler)">
+            <summary>
+            Inicializa una instancia de <see cref="T:CoreBot.DespedidaHandler"/>. Esta clase inicializa las despedidas
+            </summary>
+            <param name="next">El proximo handler</param>
+        </member>
+        <member name="M:CoreBot.DespedidaHandler.InternalHandle(Telegram.Bot.Types.Message,System.String@)">
+            <summary>
+            Procesa los mensajes "chau", "adios" y "eso es todo"
+            </summary>
+            <param name="message">Mensaje a procesar</param>
+            <param name="response">Respuesta del mensaje a procesar</param>
+            <returns>true si lo pudo procesar; false si no</returns>
+        </member>
+        <member name="T:CoreBot.EvaluarContratoHandler">
+            <summary>
+            Un handler del patron chain of responsability que implementa el comando de "Evaluar servicio"
+            </summary>
+        </member>
+        <member name="F:CoreBot.EvaluarContratoHandler.gestorContratos">
+            <summary>
+            Instancia singleton que se usa para retornar el contrato necesario.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:CoreBot.EvaluarContratoHandler.buscadorUsuario">
+            <summary>
+            Instancia Singleton para traerme el usuario
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:CoreBot.EvaluarContratoHandler.Data">
+            <summary>
+            Almacena los datos para evaluar un Contrato
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:CoreBot.EvaluarContratoHandler.State">
+            <summary>
+            Almacena el estado para el patron state
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:CoreBot.EvaluarContratoHandler.#ctor(CoreBot.BaseHandler)">
+            <summary>
+            Constructor, que llama al constructor de la clase padre
+            </summary>
+            <param name="next"></param>
+        </member>
+        <member name="M:CoreBot.EvaluarContratoHandler.CanHandle(Telegram.Bot.Types.Message)">
+            <summary>
+             Override de la clase base de los handlers para chequear si el mensaje puede ser procesado.
+            </summary>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreBot.EvaluarContratoHandler.InternalHandle(Telegram.Bot.Types.Message,System.String@)">
+            <summary>
+            Procesa cada evaluacion, y cambia el la propieda state en cada pasada, para captar en que parte del proceso se genero una incosistencia.
+            </summary>
+            <param name="message"></param>
+            <param name="response"></param>
+        </member>
+        <member name="M:CoreBot.EvaluarContratoHandler.InternalCancel">
+            <summary>
+            Cancela el handler, y retorna al estado inicial.
+            </summary>
+        </member>
+        <member name="T:CoreBot.EvaluarContratoState">
+            <summary>
+            Enum necesario para trabajar con el patron state.
+            </summary>
+        </member>
+        <member name="F:CoreBot.EvaluarContratoState.Start">
+            <summary>
+            Estado inicial del comando.
+            </summary>
+        </member>
+        <member name="F:CoreBot.EvaluarContratoState.Usuario">
+            <summary>
+            Evalua la instancia de Trabajador o empleador no sea null o tenga parametros faltantes
+            </summary>
+        </member>
+        <member name="F:CoreBot.EvaluarContratoState.RecuperarContrato">
+            <summary>
+            Evalua la instancia de recuperar el contrato a calificar.
+            </summary>
+        </member>
+        <member name="F:CoreBot.EvaluarContratoState.Calificacion">
+            <summary>
+            Evalua que el llamado a la funcion calificar sea correcto.
+            </summary>
+        </member>
+        <member name="F:CoreBot.EvaluarContratoState.EvaluarServicio">
+            <summary>
+            Crea el servicio si todo ocurre con exito
+            </summary>
+        </member>
+        <member name="T:CoreBot.EvaluarContratoData">
+            <summary>
+            Clase con los datos para evaluar el servicio
+            </summary>
+        </member>
+        <member name="P:CoreBot.EvaluarContratoData.Trabajador_Empleador">
+            <summary>
+            Almacena la instancia de trabajador o empleador.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:CoreBot.EvaluarContratoData.Evaluacion">
+            <summary>
+            Almacena la calificacion del servicio.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:CoreBot.EvaluarContratoData.ContratoaCalificar">
+            <summary>
+            Almacena el Contrato recuperado de debe Evaluar
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:CoreBot.IHandler">
+            <summary>
+            Interfaz para implementar el patron Chain of Responsability.
+            La interfaz se crea en funcion del principio de inversion de dependencias,
+            para que los clientes de la cadena de responsabilidad, que pueden ser concretos,
+            no sean dependan de una clase "handler" que potencialmente es abstracta
+            </summary>
+        </member>
+        <member name="P:CoreBot.IHandler.Next">
+            <summary>
+            Obtiene el proximo handler
+            </summary>
+            <value>El handler que sera invocado si este handler no procesa el mensaje</value>
+        </member>
+        <member name="M:CoreBot.IHandler.Handle(Telegram.Bot.Types.Message,System.String@)">
+            <summary>
+            Procesa el mensaje, o pasa al siguiente handler si no puede
+            </summary>
+            <param name="message">Mensaje a procesar</param>
+            <param name="response">La respuesta al mensaje a procesar</param>
+            <returns>El handler que proceso el mensaje, o null si no se pudo procesar</returns>
+        </member>
+        <member name="M:CoreBot.IHandler.Cancel">
+            <summary>
+            Retorna el handler al estado inicial y cancela el proximo handler si existe
+            </summary>
+        </member>
+        <member name="T:CoreBot.LeerNotificacionHandler">
+            <summary>
+            Un handler del patron chain of responsability que implementa el comando de "leer notificaciones"
+            </summary>
+        </member>
+        <member name="P:CoreBot.LeerNotificacionHandler.State">
+            <summary>
+            Estado del comando
+            </summary>
+        </member>
+        <member name="P:CoreBot.LeerNotificacionHandler.Data">
+            <summary>
+            Datos que se van obteniendo del comando
+            </summary>
+        </member>
+        <member name="F:CoreBot.LeerNotificacionHandler.buscadorUsuario">
+            <summary>
+            Buscador de usuarios singleton que busca un usuario en la lista de todos los usuarios
+            </summary>
+        </member>
+        <member name="M:CoreBot.LeerNotificacionHandler.#ctor(CoreBot.BaseHandler)">
+            <summary>
+            Constructor que implementa el base de los handlers
+            </summary>
+            <param name="next">Siguiente handler a pasar el comando de no procesarlo</param>
+        </member>
+        <member name="M:CoreBot.LeerNotificacionHandler.CanHandle(Telegram.Bot.Types.Message)">
+            <summary>
+            Override de la clase base de los handlers para chequear si el mensaje puede ser procesado
+            </summary>
+            <param name="message">Mensaje recibido del usuario</param>
+            <returns>True si se puede procesar o </returns>
+        </member>
+        <member name="M:CoreBot.LeerNotificacionHandler.InternalHandle(Telegram.Bot.Types.Message,System.String@)">
+            <summary>
+            Procesa todos los mensajes y retorna true siempre.
+            </summary>
+            <param name="message">El mensaje a procesar.</param>
+            <param name="response">La respuesta al mensaje procesado indicando que el mensaje no pudo se procesado.</param>
+            <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
+        </member>
+        <member name="M:CoreBot.LeerNotificacionHandler.InternalCancel">
+            <summary>
+            Retorna este "handler" al estado inicial.
+            </summary>
+        </member>
+        <member name="T:CoreBot.LeerNotificacionHandler.LeerNotificacionesState">
+            <summary>
+            Lista de enum con cada estado del comando
+            </summary>
+        </member>
+        <member name="F:CoreBot.LeerNotificacionHandler.LeerNotificacionesState.Start">
+            <summary>
+            Estado inicial del comando
+            </summary>
+        </member>
+        <member name="F:CoreBot.LeerNotificacionHandler.LeerNotificacionesState.ReadPrompt">
+            <summary>
+            Estado del comando en el que se espera que el usuario decida cuales notificaciones leer
+            </summary>
+        </member>
+        <member name="F:CoreBot.LeerNotificacionHandler.LeerNotificacionesState.UnreadDisplay">
+            <summary>
+            Estado del comando en el que se muestran las notificaciones sin leer
+            </summary>
+        </member>
+        <member name="F:CoreBot.LeerNotificacionHandler.LeerNotificacionesState.ReadDisplay">
+            <summary>
+            Estado del comando en el que se muestran las notificaciones leidas
+            </summary>
+        </member>
+        <member name="F:CoreBot.LeerNotificacionHandler.LeerNotificacionesState.AllDisplay">
+            <summary>
+            Estado del comando en el que se muestran todas las notificaciones
+            </summary>
+        </member>
+        <member name="T:CoreBot.LeerNotificacionHandler.LeerNotificacionesData">
+            <summary>
+            Clase que almacena la informacion a ser usada por el comando
+            </summary>
+        </member>
+        <member name="P:CoreBot.LeerNotificacionHandler.LeerNotificacionesData.Choice">
+            <summary>
+            Eleccion del usuario si quiere buscar por leidas, no leidas o todas
+            </summary>
+            <value>Una string no vacia</value>
+        </member>
+        <member name="P:CoreBot.LeerNotificacionHandler.LeerNotificacionesData.LoggedUser">
+            <summary>
+            Usuario leyendo las notificaciones
+            </summary>
+            <value>Una persona</value>
+        </member>
+        <member name="P:CoreBot.LeerNotificacionHandler.LeerNotificacionesData.Results">
+            <summary>
+            Lista de notificaciones convertidas a string
+            </summary>
+            <value>Strings que cada uno es el ToString de una notificacion</value>
+        </member>
+        <member name="T:CoreBot.RegistrarUsuarioHandler">
+            <summary>
+            Un handler del patron chain of responsability que implementa el comando de "registrar usuario"
+            </summary>
+        </member>
+        <member name="P:CoreBot.RegistrarUsuarioHandler.State">
+            <summary>
+            Estado del comando
+            </summary>
+        </member>
+        <member name="P:CoreBot.RegistrarUsuarioHandler.Data">
+            <summary>
+            Datos que se van obteniendo del comando
+            </summary>
+        </member>
+        <member name="F:CoreBot.RegistrarUsuarioHandler.gestorUsuario">
+            <summary>
+            Gestor de usuarios singleton que contiene la lista de todos los usuarios del sistema y agrega nuevos
+            </summary>
+        </member>
+        <member name="F:CoreBot.RegistrarUsuarioHandler.buscadorUsuarios">
+            <summary>
+            Buscador de usuarios singleton que busca un usuario en la lista de todos los usuarios
+            </summary>
+        </member>
+        <member name="F:CoreBot.RegistrarUsuarioHandler.calculator">
+            <summary>
+            Calculadora de distancia que corroborara si la direccion insertada existe
+            </summary>
+        </member>
+        <member name="F:CoreBot.RegistrarUsuarioHandler.client">
+            <summary>
+            Cliente para el funcionamiento de la calculadora de distancia
+            </summary>
+        </member>
+        <member name="M:CoreBot.RegistrarUsuarioHandler.#ctor(CoreBot.BaseHandler)">
+            <summary>
+            Constructor que implementa el base de los handlers
+            </summary>
+            <param name="next">Siguiente handler a pasar el comando de no procesarlo</param>
+        </member>
+        <member name="M:CoreBot.RegistrarUsuarioHandler.CanHandle(Telegram.Bot.Types.Message)">
+            <summary>
+            Override de la clase base de los handlers para chequear si el mensaje puede ser procesado
+            </summary>
+            <param name="message">Mensaje recibido del usuario</param>
+            <returns>True si se puede procesar</returns>
+        </member>
+        <member name="M:CoreBot.RegistrarUsuarioHandler.InternalHandle(Telegram.Bot.Types.Message,System.String@)">
+            <summary>
+            Procesa todos los mensajes y retorna true siempre.
+            </summary>
+            <param name="message">El mensaje a procesar.</param>
+            <param name="response">La respuesta al mensaje procesado.</param>
+        </member>
+        <member name="M:CoreBot.RegistrarUsuarioHandler.InternalCancel">
+            <summary>
+            Retorna este "handler" al estado inicial.
+            </summary>
+        </member>
+        <member name="T:CoreBot.RegistrarUsuarioHandler.RegistrarUsuarioState">
+            <summary>
+            Lista de enum con cada estado del comando
+            </summary>
+        </member>
+        <member name="F:CoreBot.RegistrarUsuarioHandler.RegistrarUsuarioState.Start">
+            <summary>
+            Estado inicial del comando
+            </summary>
+        </member>
+        <member name="F:CoreBot.RegistrarUsuarioHandler.RegistrarUsuarioState.ProfilePrompt">
+            <summary>
+            Estado en el que se espera el perfil del usuario, empleador o trabajador
+            </summary>
+        </member>
+        <member name="F:CoreBot.RegistrarUsuarioHandler.RegistrarUsuarioState.NombrePrompt">
+            <summary>
+            Estado en el que se espera el nombre del usuario
+            </summary>
+        </member>
+        <member name="F:CoreBot.RegistrarUsuarioHandler.RegistrarUsuarioState.ApellidoPrompt">
+            <summary>
+            Estado en el que se espera el apellido del usuario 
+            </summary>
+        </member>
+        <member name="F:CoreBot.RegistrarUsuarioHandler.RegistrarUsuarioState.EmailPrompt">
+            <summary>
+            Estado en el que se espera el email del usuario 
+            </summary>
+        </member>
+        <member name="F:CoreBot.RegistrarUsuarioHandler.RegistrarUsuarioState.PasswordPrompt">
+            <summary>
+            Estado en el que se espera el password del usuario 
+            </summary>
+        </member>
+        <member name="F:CoreBot.RegistrarUsuarioHandler.RegistrarUsuarioState.TelefonoPrompt">
+            <summary>
+            Estado en el que se espera el telefono del usuario 
+            </summary>
+        </member>
+        <member name="F:CoreBot.RegistrarUsuarioHandler.RegistrarUsuarioState.DireccionPrompt">
+            <summary>
+            Estado en el que se espera la direccion del usuario 
+            </summary>
+        </member>
+        <member name="F:CoreBot.RegistrarUsuarioHandler.RegistrarUsuarioState.RegistrarUsuario">
+            <summary>
+            Estado en el que se crea al usuario 
+            </summary>
+        </member>
+        <member name="T:CoreBot.RegistrarUsuarioHandler.RegistrarUsuarioData">
+            <summary>
+            Clase que almacena la informacion a ser usada por el comando
+            </summary>
+        </member>
+        <member name="F:CoreBot.RegistrarUsuarioHandler.RegistrarUsuarioData.Profile">
+            <summary>
+            Perfil del usuario, sea empleador o trabajador
+            </summary>
+        </member>
+        <member name="F:CoreBot.RegistrarUsuarioHandler.RegistrarUsuarioData.Nombre">
+            <summary>
+            Nombre del usuario
+            </summary>
+        </member>
+        <member name="F:CoreBot.RegistrarUsuarioHandler.RegistrarUsuarioData.Apellido">
+            <summary>
+            Apellido del usuario
+            </summary>
+        </member>
+        <member name="F:CoreBot.RegistrarUsuarioHandler.RegistrarUsuarioData.Email">
+            <summary>
+            Email del usuario
+            </summary>
+        </member>
+        <member name="F:CoreBot.RegistrarUsuarioHandler.RegistrarUsuarioData.Password">
+            <summary>
+            Password del usuario
+            </summary>
+        </member>
+        <member name="F:CoreBot.RegistrarUsuarioHandler.RegistrarUsuarioData.Telefono">
+            <summary>
+            Telefono del usuario
+            </summary>
+        </member>
+        <member name="F:CoreBot.RegistrarUsuarioHandler.RegistrarUsuarioData.Direccion">
+            <summary>
+            Direccion del usuario
+            </summary>
+        </member>
+        <member name="T:CoreBot.RemoverServicioHandler">
+            <summary>
+            Un handler del patron chain of responsability que implementa el comando de "crear categoria"
+            </summary>
+        </member>
+        <member name="P:CoreBot.RemoverServicioHandler.State">
+            <summary>
+            Estado del comando
+            </summary>
+        </member>
+        <member name="P:CoreBot.RemoverServicioHandler.Data">
+            <summary>
+            Datos que se van obteniendo del comando
+            </summary>
+        </member>
+        <member name="F:CoreBot.RemoverServicioHandler.buscadorServicios">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:CoreBot.RemoverServicioHandler.buscadorUsuario">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:CoreBot.RemoverServicioHandler.gestorServicios">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CoreBot.RemoverServicioHandler.#ctor(CoreBot.BaseHandler)">
+            <summary>
+            Constructor que implementa el base de los handlers
+            </summary>
+            <param name="next">Siguiente handler a pasar el comando de no procesarlo</param>
+        </member>
+        <member name="M:CoreBot.RemoverServicioHandler.CanHandle(Telegram.Bot.Types.Message)">
+            <summary>
+            Override de la clase base de los handlers para chequear si el mensaje puede ser procesado
+            </summary>
+            <param name="message">Mensaje recibido del usuario</param>
+            <returns>True si se puede procesar o </returns>
+        </member>
+        <member name="M:CoreBot.RemoverServicioHandler.InternalHandle(Telegram.Bot.Types.Message,System.String@)">
+            <summary>
+            Procesa todos los mensajes y retorna true siempre.
+            </summary>
+            <param name="message">El mensaje a procesar.</param>
+            <param name="response">La respuesta al mensaje procesado indicando que el mensaje no pudo se procesado.</param>
+            <returns>true si el mensaje fue procesado; false en caso contrario.</returns>
+        </member>
+        <member name="M:CoreBot.RemoverServicioHandler.InternalCancel">
+            <summary>
+            Retorna este "handler" al estado inicial.
+            </summary>
+        </member>
+        <member name="T:CoreBot.RemoverServicioHandler.RemoverServicioState">
+            <summary>
+            Lista de enum con cada estado del comando
+            </summary>
+        </member>
+        <member name="F:CoreBot.RemoverServicioHandler.RemoverServicioState.Start">
+            <summary>
+            Estado inicial del comando
+            </summary>
+        </member>
+        <member name="F:CoreBot.RemoverServicioHandler.RemoverServicioState.IDServicioPrompt">
+            <summary>
+            Estado del comando en el que se espera que el usuario inserte la ID del servicio a remover
+            </summary>
+        </member>
+        <member name="F:CoreBot.RemoverServicioHandler.RemoverServicioState.MotivoPrompt">
+            <summary>
+            Estado del comando en el que se espera el motivo por el que se borra el servicio
+            </summary>
+        </member>
+        <member name="T:CoreBot.RemoverServicioHandler.RemoverServicioData">
+            <summary>
+            Clase que almacena la informacion a ser usada por el comando
+            </summary>
+        </member>
+        <member name="P:CoreBot.RemoverServicioHandler.RemoverServicioData.IDServicio">
+            <summary>
+            ID del servicio
+            </summary>
+            <value>Una int no vacia</value>
+        </member>
+        <member name="P:CoreBot.RemoverServicioHandler.RemoverServicioData.Motivo">
+            <summary>
+            Motivo por el que se borra el servicio
+            </summary>
+            <value>Una string no vacia</value>
+        </member>
+        <member name="P:CoreBot.RemoverServicioHandler.RemoverServicioData.servicio">
+            <summary>
+            Servicio a ser removido
+            </summary>
+            <value>Un servicio buscado</value>
+        </member>
+        <member name="T:CoreBot.SaludoHandler">
+            <summary>
+            Handler del patron Chain of Responsability que implementa los comandos de saludo 
+            que normalmente inicializaran el bot
+            </summary>
+        </member>
+        <member name="M:CoreBot.SaludoHandler.#ctor(CoreBot.BaseHandler)">
+            <summary>
+            Inicializa una nueva instancia de la clase <see cref="T:CoreBot.SaludoHandler"/>. Esta clase inicializa los saludos
+            </summary>
+            <param name="next">El proximo handler</param>
+        </member>
+        <member name="M:CoreBot.SaludoHandler.InternalHandle(Telegram.Bot.Types.Message,System.String@)">
+            <summary>
+            Procesa el mensaje "hola", "buenas" o "hello" y retorna true; retorna false en caso contrario
+            </summary>
+            <param name="message">Mensaje a procesar</param>
+            <param name="response">Respuesta a mensaje procesado</param>
+            <returns>true si el mensaje fue procesado; false de lo contrario</returns>
+        </member>
+        <member name="T:CoreBot.BuscadorServicios">
+            <summary>
+            Clase de servicio que buscara los servicios basado en categorias, ordenado por calificacion o distancia
+            Implementa patron Facade para simplificar la declaracion de funcionalidades y reducir la cantidad de acoplamiento
+            a procesos complejos de multiples gestores
+            </summary>
+        </member>
+        <member name="F:CoreBot.BuscadorServicios.ResultadoBusqueda">
+            <summary>
+            Lista de resultados de la busqueda
+            </summary>
+        </member>
+        <member name="F:CoreBot.BuscadorServicios.client">
+            <summary>
+            Cliente de LocationAPI usado por la calculadora
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:CoreBot.BuscadorServicios.gestor">
+            <summary>
+            Singleton del gestor de Servicios
+            </summary>
+        </member>
+        <member name="F:CoreBot.BuscadorServicios.calculator">
+            <summary>
+            Calculadora de distancias
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:CoreBot.BuscadorServicios.instance">
+            <summary>
+            Instancia de buscador servicio
+            </summary>
+        </member>
+        <member name="M:CoreBot.BuscadorServicios.#ctor">
+            <summary>
+            Constructor vacio para clases de testing y utilidad
+            </summary>
+        </member>
+        <member name="M:CoreBot.BuscadorServicios.getInstance">
+            <summary>
+            Funcion de obtener instancia del singleton
+            </summary>
+        </member>
+        <member name="M:CoreBot.BuscadorServicios.BuscarServiciosPorCategoria(System.String,CoreBot.Usuario)">
+            <summary>
+            Busca servicios basado en una keyword y devuelve una lista de los resultados
+            </summary>
+            <param name="Keyword">categoria del servicio definida por el usuario como parametro</param> 
+            <param name="empleador">empleador buscado servicios</param>
+            <returns>retorna el atributo ResultadoBusqueda del buscador</returns> 
+        </member>
+        <member name="M:CoreBot.BuscadorServicios.BuscarOrdenCalificacion(System.String,CoreBot.Usuario)">
+            <summary>
+            Busca un servicio basado en un keyword y devuelve una lista ordenada por la calificacion total del Trabajador del servicio
+            </summary>
+            <param name="Keyword">Categoria por la que se busca la calificacion</param>
+            <param name="empleador">Usuario que busca los Servicios</param>
+            <returns></returns>//  
+        </member>
+        <member name="M:CoreBot.BuscadorServicios.BuscarOrdenDistancia(System.String,CoreBot.Usuario)">
+            <summary>
+            Busca un servicio basado en un keyword y devuelve una lista ordenada por la direccion del Trabajador del servicio
+            Debido a que la distancia seria medida por un API Geolocator, se espera poder usar el Servicio.Trabajador.Direccion como argumento de un metodo que calcule distancia para la 3ra entrega
+            </summary>
+            <param name="Keyword"> es una categoria de servicio definida por el usuario como parametro</param>
+            <param name="empleador"> es el empleador solicitando el servicio</param>
+        </member>
+        <member name="M:CoreBot.BuscadorServicios.MostrarServicio(System.String,CoreBot.Categoria,CoreBot.Payment,CoreBot.Costo,System.String)">
+            <summary>
+            Muestra un servicio unico basado en su informacion
+            </summary>
+            <param name="DescripcionServicio"></param>
+            <param name="categoria"></param>
+            <param name="pago"></param>
+            <param name="cost"></param>
+            <param name="email"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreBot.BuscadorServicios.BuscarServicioUnico(System.Int32)">
+            <summary>
+            Buscador de servicios por ID
+            </summary>
+            <param name="Id">ID del servicio determinada por el gestor de servicios</param>
+            <returns>El servicio encontrado</returns>
+        </member>
+        <member name="T:CoreBot.BuscadorUsuarios">
+            <summary>
+            Clase buscadora de usuarios
+            Implementa patron Facade para simplificar la declaracion de funcionalidades y reducir la cantidad de acoplamiento
+            a procesos complejos del gestor
+            </summary>
+        </member>
+        <member name="F:CoreBot.BuscadorUsuarios.gestor">
+            <summary>
+            Llamado al gestor de usuarios singleton
+            </summary>
+        </member>
+        <member name="F:CoreBot.BuscadorUsuarios.instance">
+            <summary>
+            Instancia signleton del buscador usuario
+            </summary>
+        </member>
+        <member name="M:CoreBot.BuscadorUsuarios.getInstance">
+            <summary>
+            Funcion de obtener instancia del singleton
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:CoreBot.BuscadorUsuarios.MostrarUsuario(System.String)">
+            <summary>
+            Metodo que busca y muestra un usuario basado en su ID unico
+            </summary>
+            <param name="ID">ID unico de usuario</param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreBot.BuscadorUsuarios.GetPersona(System.String)">
+            <summary>
+            Devuelve una persona en base a su ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreBot.BuscadorUsuarios.MostrarPersonaEmail(System.String)">
+            <summary>
+            Devuelve una persona en base a su email
+            </summary>
+            <param name="email">Email de la persona a buscar</param>
+            <returns>Una persona</returns>
+        </member>
+        <member name="T:CoreBot.GestorCategorias">
+            <summary>
+            Gestor singleton de las categorias del sistema
+            </summary>
+        </member>
+        <member name="P:CoreBot.GestorCategorias.TodaCategoria">
+            <summary>
+            Lista de todas las categorias del sistema
+            </summary>
+        </member>
+        <member name="M:CoreBot.GestorCategorias.#ctor">
+            <summary>
+            Constructor del gestor
+            </summary>
+        </member>
+        <member name="M:CoreBot.GestorCategorias.getInstance">
+            <summary>
+            Metodo que llama a la instancia unica del constructor
+            </summary>
+        </member>
+        <member name="M:CoreBot.GestorCategorias.CrearCategoria(System.String,CoreBot.Persona)">
+            <summary>
+            Metodo que crea una categoria. Funcionalmente sera accedido solo por el Admin
+            </summary>
+            <param name="nombre">Nombre que la categoria nueva va a tener</param>
+            <param name="usuario">Usuario usando la funcionalidad</param>
+        </member>
+        <member name="M:CoreBot.GestorCategorias.RemoverCategoria(CoreBot.Categoria,CoreBot.Persona)">
+            <summary>
+            Metodo que remueve una categoria de la lista de todas las categorias del sistema
+            </summary>
+            <param name="viejaCategoria">Categoria a remover</param>
+            <param name="usuario">Usuario accediendo a la funcionalidad</param>
+        </member>
+        <member name="M:CoreBot.GestorCategorias.AgregarCategoria(CoreBot.Categoria)">
+            <summary>
+            Metodo que agrega una categoria a la lista de todas las categorias del sistema
+            </summary>
+            <param name="nuevaCategoria">Categoria a agregar a la lista</param>
+        </member>
+        <member name="M:CoreBot.GestorCategorias.AllNames">
+            <summary>
+            Metodo que devuelve todos los nombres de todas las categorias guardadas.
+            </summary>
+            <returns>String conteniendo todos los nombres de las categorias separados por punto y comas</returns>
+        </member>
+        <member name="T:CoreBot.GestorContratos">
+            <summary>
+            Clase de servicio singleton que poseera todos los contratos y se encargara de su mantenimiento
+            </summary>
+        </member>
+        <member name="P:CoreBot.GestorContratos.TodoContratos">
+            <summary>
+            Lista que contiene todos los contratos
+            </summary>
+        </member>
+        <member name="P:CoreBot.GestorContratos.TodoPublisherContrato">
+            <summary>
+            Lista que contiene todos los publishers de contratos para implementar patron Observer
+            </summary>
+        </member>
+        <member name="F:CoreBot.GestorContratos.instance">
+            <summary>
+            Instancia del Gestor de contratos para Singleton
+            </summary>
+        </member>
+        <member name="M:CoreBot.GestorContratos.#ctor">
+            <summary>
+            Constructor del gestor
+            </summary>
+        </member>
+        <member name="M:CoreBot.GestorContratos.getInstance">
+            <summary>
+            Funcion de obtener instancia del singleton
+            </summary>        
+        </member>
+        <member name="M:CoreBot.GestorContratos.BuscarContrato(System.String)">
+             <summary>
+             <para>Retorna un Contrato en funcion del Id proporcionado.</para>
+             
+             <para>Excepciones:</para>
+            <para> ParameterInvalid:
+                 Lanza una Excepcion si el id del parametro es null.</para>
+             <para> ARgumentNullException:
+                 Lanza una Excepcion si no se puede encotrar el Contrato.</para>
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="M:CoreBot.GestorContratos.CrearContrato(CoreBot.Usuario,CoreBot.Servicio)">
+            <summary>
+            Metodo que crea un nuevo contrato a termino
+            </summary>
+        </member>
+        <member name="M:CoreBot.GestorContratos.CrearContratoHora(CoreBot.Usuario,CoreBot.Servicio,System.Decimal)">
+            <summary>
+            Metodo que crea un nuevo contrato por hora
+            </summary>
+            <param name="empleador">Empleador contratando el contrato</param>
+            <param name="servicio">Servicio a contratar</param>
+            <param name="hora">Cantidad de horas por las que se contrata el servicio</param>
+            <returns>Un contrato cargado a la lista del gestor de contratos</returns>
+        </member>
+        <member name="M:CoreBot.GestorContratos.AgregarContrato(CoreBot.Contrato,CoreBot.PublisherContrato)">
+            <summary>
+            Metodo que agrega un contrato a la lista de todos los contratos
+            </summary>
+        </member>
+        <member name="M:CoreBot.GestorContratos.MostrarContrato(CoreBot.Usuario,CoreBot.Servicio)">
+            <summary>
+            Metodo que busca y muestra el contrato
+            </summary>
+        </member>
+        <member name="M:CoreBot.GestorContratos.EvaluarContratoEmpleador(System.Int32,CoreBot.Contrato,CoreBot.Persona)">
+            <summary>
+            Metodo que evalua el contrato usado para implementar Facade - el metodo unifica mutliples pasos necesarios
+            para evaluar un contrato - y OCP - el metodo se separa del usado por el empleador para permitir mayor apertura
+            a la extension y menor necesidad de modificacion
+            </summary>
+            <param name="valor">Valor de la calificacion a darle al Empleador</param>
+            <param name="contrato">Contrato a ser calificado</param>
+            <param name="trabajador">Trabajador calificante</param>
+        </member>
+        <member name="M:CoreBot.GestorContratos.EvaluarContratoTrabajdor(System.Int32,CoreBot.Contrato,CoreBot.Persona)">
+            <summary>
+            Metodo que evalua el contrato usado para implementar Facade - el metodo unifica mutliples pasos necesarios
+            para evaluar un contrato - y OCP - el metodo se separa del usado por el trabajador para permitir mayor apertura
+            a la extension y menor necesidad de modificacion
+            </summary>
+            <param name="valor">Valor de la calificacion a darle al Trabajador</param>
+            <param name="contrato">Contrato a ser calificado</param>
+            <param name="empleador">Empleador calificante</param>
+        </member>
+        <member name="T:CoreBot.GestorServicios">
+            <summary>
+            Clase de servicio singleton que poseera todos los servicios y se encargara de su mantenimiento
+            </summary>
+        </member>
+        <member name="P:CoreBot.GestorServicios.TodoServicios">
+            <summary>
+            Lista que contiene todos los servicios
+            </summary>
+        </member>
+        <member name="P:CoreBot.GestorServicios.TodoPublisherServicios">
+            <summary>
+            Lista que contiene todos los publishers de servicios que implementan Observer
+            </summary>
+        </member>
+        <member name="F:CoreBot.GestorServicios.instance">
+            <summary>
+            Instancia del gestor de servicios
+            </summary>
+        </member>
+        <member name="M:CoreBot.GestorServicios.#ctor">
+            <summary>
+            Constructor vacio para clases de testing y utilidad
+            </summary>
+        </member>
+        <member name="M:CoreBot.GestorServicios.getInstance">
+            <summary>
+            Funcion de obtener instancia del singleton
+            </summary>
+        </member>
+        <member name="M:CoreBot.GestorServicios.CrearServicio(System.String,CoreBot.Payment,CoreBot.Costo,CoreBot.Trabajador,CoreBot.Categoria,System.Decimal)">
+            <summary>
+            Crea un servicio y llama al metodo de agregar el servicio a la lista de todos los servicios
+            </summary>
+            <param name="DescripcionServicio">Descripcion del servicio entrada por el usuario</param>
+            <param name="pago">Tipo de pago para el servicio</param>
+            <param name="cost">Forma de calcular el costo del servicio (por hora o a termino)</param>
+            <param name="trabajador">Trabajador a cargo del servicio</param>
+            <param name="categoria">Categoria del servicio</param>
+            <param name="costo">Valor monetario a pagar por el servicio</param>
+        </member>
+        <member name="M:CoreBot.GestorServicios.AgregarServicio(CoreBot.Servicio,CoreBot.PublisherServicio)">
+            <summary>
+            Agrega un servicio a la lista de todos los servicios
+            </summary>
+        </member>
+        <member name="M:CoreBot.GestorServicios.RemoverServicio(CoreBot.Servicio,CoreBot.Persona,System.String)">
+            <summary>
+            Remueve un servicio de la lista de todos los servicios y setea sus valores a null
+            </summary>
+        </member>
+        <member name="T:CoreBot.GestorUsuario">
+            <summary>
+            Clase de motor que maneja la existencia de los usuarios y administradores del sistema
+            </summary>
+        </member>
+        <member name="F:CoreBot.GestorUsuario.client">
+            <summary>
+            Cliente de LocationAPI
+            </summary>
+        </member>
+        <member name="P:CoreBot.GestorUsuario.TodoPersonas">
+            <summary>
+            Lista completa de todas las personas del sistema
+            </summary>
+        </member>
+        <member name="P:CoreBot.GestorUsuario.TodoUsuarios">
+            <summary>
+            Lista completa de todos los usuarios del sistema
+            </summary>
+        </member>
+        <member name="P:CoreBot.GestorUsuario.Administradores">
+            <summary>
+            Lista de todos los administradores
+            </summary>
+        </member>
+        <member name="P:CoreBot.GestorUsuario.Trabajadores">
+            <summary>
+            Lista de todos los trabajadores
+            </summary>
+        </member>
+        <member name="P:CoreBot.GestorUsuario.Empleadores">
+            <summary>
+            Lista de todos los empleadores
+            </summary>
+        </member>
+        <member name="M:CoreBot.GestorUsuario.getInstance">
+            <summary>
+            Funcion de obtener instancia del singleton
+            </summary>
+        </member>
+        <member name="M:CoreBot.GestorUsuario.AgregarAdmin(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Metodo que agrega un admin al sistema
+            </summary>
+            <param name="nombre">Nombre del admin</param>
+            <param name="apellido">Apellido del admin</param>
+            <param name="email">Email del admin</param>
+            /// <param name="contraseña">Email del admin</param>
+            <param name="id">ID unico del usuario proporcionado por Telegram</param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreBot.GestorUsuario.AgregarEmpleador(System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Metodo que agrega un empleador al sistema
+            </summary>
+            <param name="nombre">Nombre del empleador</param>
+            <param name="apellido">Apellido del empleador</param>
+            <param name="email">Email del empleador</param>
+            <param name="telefono">Telefono del empleador</param>
+            <param name="direccion">Direccion del empleador</param>
+            <param name="contraseña">Direccion del empleador</param>
+            <param name="id">ID unico del usuario proporcionado por Telegram</param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreBot.GestorUsuario.AgregarTrabajador(System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Metodo que agrega un trabajador al sistema
+            </summary>
+            <param name="nombre">Nombre del trabajador</param>
+            <param name="apellido">Apellido del trabajador</param>
+            <param name="email">Email del trabajador</param>
+            <param name="telefono">Telefono del trabajador</param>
+            <param name="direccion">Direccion del trabajador</param>
+            <param name="contraseña">Direccion del trabajador</param>
+            <param name="id">ID unico del usuario proporcionado por Telegram</param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreBot.GestorUsuario.AgregarUsuario(CoreBot.Usuario)">
+            <summary>
+            Agrega un nuevo usuario a la lista de todos los usuarios
+            </summary>
+            <param name="nuevoUsuario">Un usuario valido, sea empleador o trabajador</param>
+        </member>
+        <member name="M:CoreBot.GestorUsuario.AgregarPersona(CoreBot.Persona)">
+            <summary>
+            Agregar una nueva persona a la lista 
+            </summary>
+            <param name="nuevaPersona">Una persona valida, sea empleador, trabajador o admin</param>
+        </member>
+        <member name="M:CoreBot.GestorUsuario.RemoverAdmin(CoreBot.Administrador)">
+            <summary>
+            Remueve Administradores de las listas del gestor
+            </summary>
+            <param name="viejoAdmin"></param>
+        </member>
+        <member name="M:CoreBot.GestorUsuario.RemoverTrabajador(CoreBot.Trabajador)">
+            <summary>
+            Remueve Trabajadores de las listas del gestor
+            </summary>
+            <param name="viejoTrabajador"></param>
+        </member>
+        <member name="M:CoreBot.GestorUsuario.RemoverEmpleador(CoreBot.Empleador)">
+            <summary>
+            Remueve Empleadores de las listas del gestor
+            </summary>
+            <param name="viejoEmpleador"></param>
+        </member>
+        <member name="M:CoreBot.GestorUsuario.RemoverUsuario(CoreBot.Usuario)">
+            <summary>
+            Remueve un usuario de la lista de usuario y llama a remover Persona
+            </summary>
+            <param name="viejoUsuario"></param>
+        </member>
+        <member name="M:CoreBot.GestorUsuario.RemoverPersona(CoreBot.Persona)">
+            <summary>
+            Remueve una Persona de la lista de Personas
+            </summary>
+            <param name="viejoPersona"></param>
+        </member>
+        <member name="T:CoreBot.Distance">
+            <summary>
+            Representa la distancia entre las coordenas o las direcciones de origen y destino retornada en los métodos
+            </summary>
+        </member>
+        <member name="P:CoreBot.Distance.Found">
+            <summary>
+            Obtiene o establece un valor que indica si se encontraron o no las coordenas o las direcciones de origen y
+            destino.
+            </summary>
+            <value>true si se encontró la dirección; false en caso contrario.</value>
+        </member>
+        <member name="P:CoreBot.Distance.TravelDistance">
+            <summary>
+            Obtiene o establece la distancia entre las coordenadas o las direcciones de origen y destino.
+            </summary>
+            <value>La distancia en metros.</value>
+        </member>
+        <member name="P:CoreBot.Distance.TravelDuration">
+            <summary>
+            Obtiene o establece el tiempo que se demora en llegar de las coordenadas o de las direcciones de origen a las de destino.
+            </summary>
+            <value>El tiempo que se demora en minutos.</value>
+        </member>
+        <member name="T:CoreBot.DistanceCalculator">
+            <summary>
+            Un calculador de distancias concreto que utiliza una API de localización para calcular la distancia entre dos
+            direcciones.
+            </summary>
+        </member>
+        <member name="M:CoreBot.DistanceCalculator.#ctor(CoreBot.LocationApiClient)">
+            <summary>
+            Constructor que llama al cliente del API
+            </summary>
+            <param name="client">API client</param>
+        </member>
+        <member name="M:CoreBot.DistanceCalculator.CalculateDistance(System.String,System.String)">
+            <summary>
+            Calculadora de distancias entre dos direcciones
+            </summary>
+            <param name="fromAddress">Direccion 1</param>
+            <param name="toAddress">Direccion 2</param>
+            <returns></returns>
+        </member>
+        <member name="T:CoreBot.DistanceResult">
+            <summary>
+            Una implementación concreta del resutlado de calcular distancias. Además de las propiedades definidas en
+            IDistanceResult esta clase agrega propiedades para acceder a las coordenadas de las direcciones buscadas.
+            </summary>
+        </member>
+        <member name="M:CoreBot.DistanceResult.#ctor(CoreBot.Location,CoreBot.Location,System.Double,System.Double)">
+            <summary>
+            Inicializa una nueva instancia de DistanceResult a partir de dos coordenadas, la distancia y el tiempo
+            entre ellas.
+            </summary>
+            <param name="from">Las coordenadas de origen.</param>
+            <param name="to">Las coordenadas de destino.</param>
+            <param name="distance">La distancia entre las coordenadas.</param>
+            <param name="time">El tiempo que se demora en llegar del origen al destino.</param>
+        </member>
+        <member name="P:CoreBot.DistanceResult.FromExists">
+            <summary>
+            Variable que define si la direccion de entrada existe
+            </summary>
+        </member>
+        <member name="P:CoreBot.DistanceResult.ToExists">
+            <summary>
+            Variable que define si la direccion de salida existe
+            </summary>
+        </member>
+        <member name="P:CoreBot.DistanceResult.Distance">
+            <summary>
+            Distancia entre dos direcciones
+            </summary>
+        </member>
+        <member name="P:CoreBot.DistanceResult.Time">
+            <summary>
+            Tiempo estimado para recorrer la distancia entre dos direcciones
+            </summary>
+        </member>
+        <member name="P:CoreBot.DistanceResult.From">
+            <summary>
+            Ubicacion de salida
+            </summary>
+        </member>
+        <member name="P:CoreBot.DistanceResult.To">
+            <summary>
+            Ubicacion de llegada
+            </summary>
+        </member>
+        <member name="T:CoreBot.IDistanceCalculator">
+            <summary>
+            Una interfaz que define una abstracción para un calculador de distancias genérico.
+            </summary>
+            <remarks>
+            Esta interfaz fue creada siguiendo el principio de inversión de dependencias para evitar que los comandos
+            concretos dependan de calculadores de distancias concretos; en su lugar los comandos concretos dependen de esta
+            abstracción.
+            Entre otras cosas est permite cambiar el calculador de distancias en tiempo de ejecución, para utilizar uno en
+            los casos de prueba que retorna resultados conocidos para direcciones conocidas, y otro en la versión final para
+            buscar usando una API de localizaciones.
+            </remarks>
+        </member>
+        <member name="M:CoreBot.IDistanceCalculator.CalculateDistance(System.String,System.String)">
+            <summary>
+            Determina si existe una dirección.
+            </summary>
+            <param name="fromAddress">Una de las direcciones a buscar.</param>
+            <param name="toAddress">Una de las direcciones a buscar.</param>
+            <returns>true si la dirección existe; false en caso contrario.</returns>
+        </member>
+        <member name="T:CoreBot.IDistanceResult">
+            <summary>
+            Una interfaz que define una abstracción para el resultado de calcular distancias.
+            </summary>
+        </member>
+        <member name="P:CoreBot.IDistanceResult.FromExists">
+            <summary>
+            Obtiene un valor que indica si la dirección de origen para el cálculo de distancias existe; sólo se puede
+            calcular la distancia entre direcciones que existen.
+            </summary>
+        </member>
+        <member name="P:CoreBot.IDistanceResult.ToExists">
+            <summary>
+            Obtiene un valor que indica si la dirección de destino para el cálculo de distancias existe; sólo se puede
+            calcular la distancia entre direcciones que existen.
+            </summary>
+        </member>
+        <member name="P:CoreBot.IDistanceResult.Distance">
+            <summary>
+            La distancia calculada.
+            </summary>
+        </member>
+        <member name="P:CoreBot.IDistanceResult.Time">
+            <summary>
+            El tiempo en llegar del origen al destino.
+            </summary>
+        </member>
+        <member name="T:CoreBot.Location">
+            <summary>
+            Representa las coordenadas y otros datos de la ubicación de una dirección retornada en el método
+            </summary>
+        </member>
+        <member name="P:CoreBot.Location.Found">
+            <summary>
+            Obtiene o establece un valor que indica si se encontró o no la dirección. En ese caso son válidos los demás
+            valores. En caso contrario los demás valores son indeterminados.
+            </summary>
+            <value>true si se encontró la dirección; false en caso contrario.</value>
+        </member>
+        <member name="P:CoreBot.Location.AddresLine">
+            <summary>
+            Obtiene o establece la dirección: calle y número, ruta y kilómetro, etc.
+            </summary>
+            <value>Por ejemplo, Avenida 8 de Octubre 2738.</value>
+        </member>
+        <member name="P:CoreBot.Location.CountryRegion">
+            <summary>
+            Obtiene o establece el país.
+            </summary>
+            <value>Por ejemplo, Uruguay.</value>
+        </member>
+        <member name="P:CoreBot.Location.FormattedAddress">
+            <summary>
+            Obtiene o establece la dirección completa, incluyendo ciudad, código postal, etc.
+            </summary>
+            <value>Por ejemplo, Avenida 8 de Octubre 2738, Montevideo, 11200, Uruguay.</value>
+        </member>
+        <member name="P:CoreBot.Location.Locality">
+            <summary>
+            Obtiene o establece la localidad o ciudad.
+            </summary>
+            <value>Por ejemplo, Montevideo.</value>
+        </member>
+        <member name="P:CoreBot.Location.PostalCode">
+            <summary>
+            Obtiene o establece el código postal.
+            </summary>
+            <value>Por ejemplo, 11200.</value>
+        </member>
+        <member name="P:CoreBot.Location.Latitude">
+            <summary>
+            Obtiene o establece la latitud de la dirección.
+            </summary>
+            <value>El valor de la latitud en formato decimal.</value>
+        </member>
+        <member name="P:CoreBot.Location.Longitude">
+            <summary>
+            Obtiene o establece la longitud de la dirección.
+            </summary>
+            <value>El valor de la longitud en formato decimal.</value>
+        </member>
+        <member name="T:CoreBot.LocationApiClient">
+            <summary>
+            Un cliente de la API de localización.
+            </summary>
+        </member>
+        <member name="M:CoreBot.LocationApiClient.GetLocationAsync(System.String,System.String,System.String,System.String)">
+            <summary>
+            Obtiene las coordenadas de una dirección.
+            </summary>
+            <param name="address">La dirección.</param>
+            <param name="city">La ciudad. Es opcional. El valor predeterminado es Montevideo.</param>
+            <param name="department">El departamento, estado, provincia, etc. Es opcional. El valor predeterminado es `ontevideo.</param>
+            <param name="country">El país. Es opcional. El valor predeterminado es Uruguay.</param>
+            <returns>Las coordenadas de la dirección.</returns>
+        </member>
+        <member name="M:CoreBot.LocationApiClient.GetLocation(System.String,System.String,System.String,System.String)">
+            <inheritdoc cref="M:CoreBot.LocationApiClient.GetLocationAsync(System.String,System.String,System.String,System.String)" />
+            <remarks>
+            Versión sincrónica.
+            </remarks>
+        </member>
+        <member name="M:CoreBot.LocationApiClient.GetDistanceAsync(CoreBot.Location,CoreBot.Location)">
+            <summary>
+            Obtiene la distancia entre dos coordenadas.
+            </summary>
+            <param name="from">La coordenada de origen.</param>
+            <param name="to">La coordenada de destino.</param>
+            <returns>La distancia entre las dos coordenadas.</returns>
+        </member>
+        <member name="M:CoreBot.LocationApiClient.GetDistance(CoreBot.Location,CoreBot.Location)">
+            <inheritdoc cref="M:CoreBot.LocationApiClient.GetDistanceAsync(CoreBot.Location,CoreBot.Location)" />
+            <remarks>
+            Versión sincrónica.
+            </remarks>
+        </member>
+        <member name="M:CoreBot.LocationApiClient.GetDistanceAsync(System.String,System.String)">
+            <summary>
+            Obtiene la distancia entre dos direcciones.
+            </summary>
+            <param name="from">La dirección de origen.</param>
+            <param name="to">La dirección de destino.</param>
+            <returns>La distancia entre las dos direcciones.</returns>
+        </member>
+        <member name="M:CoreBot.LocationApiClient.GetDistance(System.String,System.String)">
+            <inheritdoc cref="M:CoreBot.LocationApiClient.GetDistanceAsync(System.String,System.String)" />.
+            <remarks>
+            Versión sincrónica.
+            </remarks>
+        </member>
+        <member name="M:CoreBot.LocationApiClient.DownloadMapAsync(System.Double,System.Double,System.String,System.Int32)">
+            <summary>
+            Descarga una mapa de una coordenada.
+            </summary>
+            <param name="latitude">La latitud de la coordenada.</param>
+            <param name="longitude">La longitud de la coordenada.</param>
+            <param name="path">La ruta del archivo donde guardar el mapa. El formato es PNG.</param>
+            <param name="zoomLevel">El nivel de zoom del mapa entre 1 y 20. Es opcional. El valor predeterminado es
+            15.</param>
+            <returns>
+            Una tarea que representa la operación asincrónica.
+            </returns>
+        </member>
+        <member name="M:CoreBot.LocationApiClient.DownloadMap(System.Double,System.Double,System.String,System.Int32)">
+            <inheritdoc cref="M:CoreBot.LocationApiClient.DownloadMapAsync(System.Double,System.Double,System.String,System.Int32)" />.
+            <remarks>
+            Versión sincrónica.
+            </remarks>
+        </member>
+        <member name="M:CoreBot.LocationApiClient.DownloadRouteAsync(System.Double,System.Double,System.Double,System.Double,System.String)">
+            <summary>
+            Un mapa con una ruta entre dos coordenadas.
+            </summary>
+            <param name="fromLatitude">La latitud de la coordenada de origen.</param>
+            <param name="fromLongitude">La longitu de la coordenada de origen.</param>
+            <param name="toLatitude">La latitud de la coordenada de destino.</param>
+            <param name="toLongitude">La longitud de la coordenada de destino.</param>
+            <param name="path">La ruta del archivo donde guardar el mapa. Es formato es PNG.</param>
+            <returns>
+            Una tarea que representa la operación asincrónica.
+            </returns>
+        </member>
+        <member name="M:CoreBot.LocationApiClient.DownloadRoute(System.Double,System.Double,System.Double,System.Double,System.String)">
+            <inheritdoc cref="M:CoreBot.LocationApiClient.DownloadRouteAsync(System.Double,System.Double,System.Double,System.Double,System.String)" />
+            <remarks>
+            Versión sincrónica.
+            </remarks>
+        </member>
+        <member name="M:CoreBot.LocationApiClient.Dispose">
+            <inheritdoc cref="T:System.IDisposable" />
+        </member>
+        <member name="M:CoreBot.LocationApiClient.Dispose(System.Boolean)">
+            <inheritdoc cref="T:System.IDisposable" />
+        </member>
+        <member name="T:CoreBot.Autenticar">
+            <summary>
+            Clase que confirma el acceso del usuario tratando de acceder a una funcionalidad
+            A ser usada en los gestores y buscadores que implementan Facade
+            </summary>
+        </member>
+        <member name="F:CoreBot.Autenticar.SinAcceso">
+            <summary>
+            Mensaje de error a enviar si el usuario no tiene acceso
+            </summary>
+        </member>
+        <member name="M:CoreBot.Autenticar.AutenticarAdmin(CoreBot.Persona)">
+            <summary>
+            Confirma que el usuario es un administrador
+            </summary>
+            <param name="usuario">Usuario loggeado</param>
+        </member>
+        <member name="M:CoreBot.Autenticar.AutenticarEmpleador(CoreBot.Persona)">
+            <summary>
+            Confirma que el usuario es un empleador
+            </summary>
+            <param name="usuario">Usuario loggeado</param>
+        </member>
+        <member name="M:CoreBot.Autenticar.AutenticarTrabajador(CoreBot.Persona)">
+            <summary>
+            Confirma que el usuario es un trabajador
+            </summary>
+            <param name="usuario">Usuario loggeado</param>
+        </member>
+        <member name="T:CoreBot.Category">
+            <summary>
+            Enum de diferentes categorias que puede contener el sevicio
+            </summary>
+        </member>
+        <member name="F:CoreBot.Category.Jardineria">
+            <summary>
+            Jardineria
+            </summary>
+        </member>
+        <member name="F:CoreBot.Category.Albañilería">
+            <summary>
+            Albañileria
+            </summary>        
+        </member>
+        <member name="F:CoreBot.Category.Conductor">
+            <summary>
+            Conductor
+            </summary>
+        </member>
+        <member name="F:CoreBot.Category.Carpintero">
+            <summary>
+            Carpintero
+            </summary>
+        </member>
+        <member name="F:CoreBot.Category.Arquitecto">
+            <summary>
+            Arquitecto
+            </summary>
+        </member>
+        <member name="F:CoreBot.Category.Otros">
+            <summary>
+            Otros
+            </summary>
+        </member>
+        <member name="F:CoreBot.Category.SinDefinir">
+            <summary>
+            Sin definir
+            </summary>
+        </member>
+        <member name="T:CoreBot.Costo">
+            <summary>
+            Enum del tipo de costo del servicio
+            </summary>
+        </member>
+        <member name="F:CoreBot.Costo.Costo_por_hora">
+            <summary>
+            Costo por hora
+            </summary>
+        </member>
+        <member name="F:CoreBot.Costo.Costo_total_servicio">
+            <summary>
+            Costo total del servicio
+            </summary>
+        </member>
+        <member name="T:CoreBot.Payment">
+            <summary>
+            Enum que contiene el método de pago
+            </summary>
+        </member>
+        <member name="F:CoreBot.Payment.Debito">
+            <summary>
+            Debito
+            </summary>
+        </member>
+        <member name="F:CoreBot.Payment.Credito">
+            <summary>
+            Credito
+            </summary>
+        </member>
+        <member name="F:CoreBot.Payment.Efectivo">
+            <summary>
+            Efectivo
+            </summary>
+        </member>
+        <member name="F:CoreBot.Payment.Transferencia">
+            <summary>
+            Transferencia
+            </summary>
+        </member>
+        <member name="T:CoreBot.ICampoUnico">
+            <summary>
+            Interfaz del Campo unico
+            </summary>
+        </member>
+        <member name="M:CoreBot.ICampoUnico.GetCampoUnico">
+            <summary>
+            Metodo para obtener el campo unico
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:CoreBot.ListaGen`1">
+            <summary>
+            Clase de utilidad que contiene listas genericas
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:CoreBot.ListaGen`1.AgregarElemento(System.Collections.Generic.List{`0},`0,System.Boolean)">
+            <summary>
+            Metodo que agrega un elemento a la lista
+            </summary>
+            <param name="lista"></param>
+            <param name="elem"></param>
+            <param name="unico"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreBot.ListaGen`1.ModificarElemento(System.Collections.Generic.List{`0},`0)">
+            <summary>
+            Metodo que modifica un elemento de la lista
+            </summary>
+            <param name="lista"></param>
+            <param name="elem"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CoreBot.ListaGen`1.BorrarElemento(System.Collections.Generic.List{`0},`0)">
+            <summary>
+            Metodo que borra un elemento de la lista
+            </summary>
+            <param name="lista"></param>
+            <param name="elem"></param>
+            <returns></returns>
+        </member>
+        <member name="T:CoreBot.Publisher">
+            <summary>
+            Clase que implementa el Patron Observer para notificar usuarios de eventos particulares que ocurren en el sistema
+            </summary>
+        </member>
+        <member name="P:CoreBot.Publisher.Subscriptores">
+            <summary>
+            Lista de personas que estan subscriptos al objeto
+            </summary>
+            <value></value>
+        </member>
+        <member name="M:CoreBot.Publisher.AgregarSub(CoreBot.Persona)">
+            <summary>
+            Metodo que agrega los subscriptores al publisher
+            </summary>
+            <param name="persona">Persona a ser agregada a los subscriptores</param>
+        </member>
+        <member name="T:CoreBot.PublisherContrato">
+            <summary>
+            Clase que implementa el Patron Observer para notificar usuarios subscritos a un contrato de cambios hechos al mismo
+            </summary>
+        </member>
+        <member name="F:CoreBot.PublisherContrato.Contrato">
+            <summary>
+            Contrato que el publisher esta relacionado
+            </summary>
+        </member>
+        <member name="M:CoreBot.PublisherContrato.#ctor(CoreBot.Contrato)">
+            <summary>
+            Constructor del publisher
+            </summary>
+            <param name="contrato">Contrato al que el publisher estara relacionado</param>
+        </member>
+        <member name="M:CoreBot.PublisherContrato.NotificarEvaluacion(CoreBot.Usuario)">
+            <summary>
+            Metodo que envia una notificacion a los subscriptores del publisher, a ser disparada cuando se evalue el contrato relacionado
+            </summary>
+            <param name="calificante">Usuario que califico el contrato</param>
+        </member>
+        <member name="T:CoreBot.PublisherServicio">
+            <summary>
+            Clase que implementa el Patron Observer para notificar usuarios de eventos particulares que ocurren en el sistema
+            </summary>
+        </member>
+        <member name="F:CoreBot.PublisherServicio.Servicio">
+            <summary>
+            Servicio relacionado al publisher
+            </summary>
+        </member>
+        <member name="M:CoreBot.PublisherServicio.#ctor(CoreBot.Servicio)">
+            <summary>
+            Constructor del publisher
+            </summary>
+            <param name="servicio">Servicio relacionado al publisher</param>
+        </member>
+        <member name="M:CoreBot.PublisherServicio.NotificarDeBaja(System.String)">
+            <summary>
+            Metodo que envia una notificacion a los subscriptores, a ser disparada cuando se de de baja un servicio
+            </summary>
+            <param name="razon">Razon por la que se dio de baja el servicio</param>
+        </member>
+    </members>
+</doc>
